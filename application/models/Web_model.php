@@ -1,10 +1,17 @@
 <?php
 
-class Twitter_model extends CI_Model
+class Web_model extends CI_Model
 {
     function __construct()
     {
         parent::__construct();
+    }
+
+
+    public function get_All_Sections(){
+        return $this->db->query("SELECT secciones.id_secciones, secciones.imagen, secciones.titulo, secciones.detalle, secciones.nombre
+                                FROM secciones
+                                ORDER BY secciones.id_secciones ASC")->result_array();
     }
     
     /*public function add_tweet($params)

@@ -5,20 +5,21 @@ class Web extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('Twitter_model');
+        $this->load->model('Web_model');
         $this->load->library('session');
     }
 
-	function index($tweets_data = array())
+	function index($sections_data = array())
 	{
-        /*if($tweets_data == null)
-            $data['tweets'] = $this->Twitter_model->get_all_tweets();
+        if($sections_data == null)
+            $data['sections'] = $this->Web_model->get_All_Sections();
         else
-            $data['tweets'] = $tweets_data;*/
+            $data['sections'] = $sections_data;
 
         $data['_view'] = 'web/index';
         $this->load->view('layouts/main',$data);
-	}
+    }
+    
 
     /*function process()
     {

@@ -39,7 +39,19 @@ a, img {
 	margin-top: 30px;
 }
 
-#main_panel{
+.main_panel1{
+	position: relative;
+	display: block;
+	width: 95%;
+	margin: auto;
+	height: auto;
+	overflow: auto;
+	border: 1px solid #253341;
+	padding: 20px;
+}
+
+.main_panel2{
+	display: none;
 	position: relative;
 	width: 95%;
 	margin: auto;
