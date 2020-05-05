@@ -7,7 +7,7 @@ class Twitter_model extends CI_Model
         parent::__construct();
     }
     
-    public function add_tweet($params)
+    /*public function add_tweet($params)
     {
         $this->db->insert('tweets',$params);
         return $this->db->insert_id();
@@ -49,5 +49,5 @@ class Twitter_model extends CI_Model
                                 WHERE tweets.users_id = users.users_id
                                 AND tweets.tweets_id = " .$id)->row_array();
 
-    }
+    }*/
 }

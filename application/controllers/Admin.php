@@ -1,6 +1,6 @@
 <?php
 
-Class Auth extends CI_Controller {
+Class Admin extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -13,7 +13,7 @@ Class Auth extends CI_Controller {
 
 	//Muestra la vista del Login
 	public function index() {
-		$this->load->view('auth/login');
+		$this->load->view('admin/login');
 	}
 
 
@@ -21,7 +21,7 @@ Class Auth extends CI_Controller {
     {
     	//precarga todos los datos con los que la vista debe iniciar
     	$this->load->model('Twitter_model');
-        $data['tweets'] = $this->Twitter_model->get_all_tweets();
+        //$data['tweets'] = $this->Twitter_model->get_all_tweets();
         $data['_view'] = $view;
 		$this->load->view('layouts/main',$data);
     }
@@ -39,9 +39,9 @@ Class Auth extends CI_Controller {
 			//Esto es para el caso de si la sesión aún está activa
 			if(isset($this->session->userdata['logged_in'])){
 				 //Función propia para cargar la vista indicada con datos precargados
-				$this->load_data_view('twitter/index');
+				$this->load_data_view('admin/login');
 			}else{
-				$this->load->view('auth/login');
+				$this->load->view('admin/login');
 			}
 
 		} else {
@@ -72,8 +72,8 @@ Class Auth extends CI_Controller {
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					redirect('twitter/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
-					$this->load_data_view('twitter/index'); //luego cargamos la vista
+					redirect('web/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					$this->load_data_view('web/index'); //luego cargamos la vista
 
 				}
 			} else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
@@ -81,7 +81,7 @@ Class Auth extends CI_Controller {
 					'error_message' => 'Usuario o Contraseña incorrectos'
 				);
 
-				$this->load->view('auth/login', $data);
+				$this->load->view('admin/login', $data);
 			}
 		}
 	}
@@ -97,7 +97,7 @@ Class Auth extends CI_Controller {
 		$this->session->unset_userdata('logged_in', $sess_array);
 		$this->session->sess_destroy();
 		$data['message_display'] = 'Has cerrado tu sesión de forma exitosa.';
-		$this->load->view('auth/login', $data);
+		$this->load->view('admin/login', $data);
 	}
 
 }

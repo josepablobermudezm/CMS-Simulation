@@ -12,7 +12,7 @@
   	<div id="main_box">
 	    <?php                    
 	    if(isset($_view) && $_view)
-	        $this->load->view($_view);
+          $this->load->view($_view);
 	    ?> 
     </div> 
   </body>

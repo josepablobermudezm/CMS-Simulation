@@ -10,7 +10,7 @@ class User extends CI_Controller{
 
     function index()
     {
-        $data['_view'] = 'twitter/index';
+        $data['_view'] = 'web/index';
         $this->load->view('layouts/main',$data);
     }
 
@@ -79,7 +79,7 @@ class User extends CI_Controller{
                 $this->load->view('layouts/main',$data);
             }
         } else {       
-            redirect('twitter/index/');
+            redirect('web/index/');
         }
     } 
 
@@ -93,7 +93,7 @@ class User extends CI_Controller{
 
         $this->session->sess_destroy();
         $data['message_display'] = 'Tu cuenta se ha eliminado exitosamente. ¡Vuelve pronto!';
-        $this->load->view('auth/login', $data);
+        $this->load->view('admin/login', $data);
     }
 
     function upload_photo($users_id)

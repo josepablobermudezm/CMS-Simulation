@@ -1,6 +1,6 @@
 <?php
 
-class Twitter extends CI_Controller {
+class Web extends CI_Controller {
 
 	function __construct()
     {
@@ -16,7 +16,7 @@ class Twitter extends CI_Controller {
         else
             $data['tweets'] = $tweets_data;*/
 
-		$data['_view'] = 'twitter/index';
+        $data['_view'] = 'web/index';
         $this->load->view('layouts/main',$data);
 	}
 
