@@ -1,6 +1,6 @@
 <?php
 
-Class Auth_model extends CI_Model {
+Class Admin_model extends CI_Model {
 
 	//Se utiliza el algoritmo de encriptación nativo de PHP password_hash('contraseña', PASSWORD_BCRYPT) para encriptar.
 	//Para verificar la contraseña se utiliza password_verify('contraseña','passw de la BD')

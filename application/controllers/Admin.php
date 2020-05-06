@@ -4,11 +4,10 @@ Class Admin extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('session');
-		$this->load->model('Auth_model');
+		$this->load->model('Admin_model');
 	}
 
 	//Muestra la vista del Login
@@ -20,7 +19,7 @@ Class Admin extends CI_Controller {
 	function load_data_view($view)
     {
     	//precarga todos los datos con los que la vista debe iniciar
-    	$this->load->model('Twitter_model');
+    	$this->load->model('Web_model');
         $data['sections'] = $this->Web_model->get_All_Sections();
         $data['_view'] = $view;
 		$this->load->view('layouts/main',$data);
@@ -39,9 +38,10 @@ Class Admin extends CI_Controller {
 			//Esto es para el caso de si la sesión aún está activa
 			if(isset($this->session->userdata['logged_in'])){
 				 //Función propia para cargar la vista indicada con datos precargados
-				$this->load_data_view('web/index');
+				$this->load_data_view('admin/administrador');
 			}else{
 				$this->load->view('admin/login');
+
 			}
 
 		} else {
@@ -52,12 +52,12 @@ Class Admin extends CI_Controller {
 				'password' => $this->input->post('txt_password')
 			);
 
-			$result = $this->Auth_model->login($data); //Función login del Modelo Auth
+			$result = $this->Admin_model->login($data); //Función login del Modelo Auth
 
 			if ($result == TRUE) { //Si autenticamos
 
 				$username = $this->input->post('txt_username');
-				$result = $this->Auth_model->get_user_information($username); //Función read_user_information del Modelo Auth
+				$result = $this->Admin_model->get_user_information($username); //Función read_user_information del Modelo Auth
 
 				//leemos los datos del usuario auntenticado y los ingresamos en las Variables de Sesion
 				if ($result != false) {
@@ -72,9 +72,8 @@ Class Admin extends CI_Controller {
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					redirect('web/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
-					$this->load_data_view('web/index'); //luego cargamos la vista
-
+					//redirect('admin/administrador', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					$this->load_data_view('admin/administrador'); //luego cargamos la vista
 				}
 			} else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
 				$data = array(
