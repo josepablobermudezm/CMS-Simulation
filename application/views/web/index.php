@@ -120,28 +120,28 @@
 
         <div class="row">
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" style=" float: left; width: 25%; padding: 10px; position: relative;  width:70%; height:70%;" alt="Nature" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" alt="Nature" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f2.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Snow" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f2.jpg'); ?>" alt="Snow" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Mountains" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" alt="Mountains" class="Imágenes"  onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f4.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f4.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f5.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f5.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f6.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Mountains" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f6.jpg'); ?>" alt="Mountains" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f7.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f7.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f8.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f8.jpg'); ?>"  alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
           </div>
         </div>
       </div>
