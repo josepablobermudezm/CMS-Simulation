@@ -47,7 +47,8 @@
       </div>
       <div id="after_submit"></div>
       <div id="div_6" class="main_panel2">
-          <?php echo form_open_multipart('web/correo/'); ?>
+        <?php echo form_open_multipart('web/correo/'); ?>
+        <div class="div_correo">
           <div class="row">
             <label class="required" for="name">Your name:</label><br />
             <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
@@ -69,7 +70,8 @@
             <span id="message_validation" class="error_message"></span>
             <input id="submit_button" type="submit" value="Send email" />
           </div>
-          <?php echo form_close(); ?>
+        </div>
+        <?php echo form_close(); ?>
       </div>
     </div>
   </div>

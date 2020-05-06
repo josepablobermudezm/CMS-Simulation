@@ -39,7 +39,7 @@ a, img {
 	margin-top: 30px;
 }
 
-.main_panel1{
+.main_panel1 {
 	position: relative;
 	display: block;
 	width: 95%;
@@ -50,7 +50,7 @@ a, img {
 	padding: 20px;
 }
 
-.main_panel2{
+.main_panel2 {
 	display: none;
 	position: relative;
 	width: 95%;
@@ -316,10 +316,10 @@ a, img {
 }
 
 a:link, a:visited, a:active {
-	text-decoration:none;
+	text-decoration: none;
 }
 
-#divBoton{
+#divBoton {
 	overflow: auto;
 	display: inline-block;
 	position: relative;
@@ -346,7 +346,7 @@ ul {
 	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-	text-decoration:none;
+	text-decoration: none;
 }
 
 ul li {
@@ -365,7 +365,6 @@ ul li {
 	transition: all 0.2s;
 	margin: 2px;
 	margin-top: 25px;
-
 }
 
 ul li:hover {
@@ -409,22 +408,17 @@ ul li:hover ul {
 	visibility: visible;
 }
 
-#label{
+#label {
 	font-size: 40px;
-
 }
 
-#label{
+#label {
 	font-size: 40px;
-
 }
 
-#parrafo{
+#parrafo {
 	font-size: 15px;
-
 }
-
-
 
 form {
 	/* Centrar el formulario en la página */
@@ -434,60 +428,77 @@ form {
 	padding: 1em;
 	border: 1px solid #CCC;
 	border-radius: 1em;
-  }
-  
+}
+
 ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-  }
-  
-  form li + li {
+}
+
+form li+li {
 	margin-top: 1em;
-  }
-  
-  label {
+}
+
+label {
 	/* Tamaño y alineación uniforme */
 	display: inline-block;
 	width: 90px;
 	text-align: right;
-  }
-  
-  input, 
-  textarea {
+}
+
+input, textarea {
 	/* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
 	   Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
 	font: 1em sans-serif;
-  
 	/* Tamaño uniforme del campo de texto */
 	width: 300px;
 	box-sizing: border-box;
-  
 	/* Hacer coincidir los bordes del campo del formulario */
 	border: 1px solid #999;
-  }
-  
-  input:focus, 
-  textarea:focus {
+}
+
+input:focus, textarea:focus {
 	/* Destacado adicional para elementos que tienen el cursor */
 	border-color: #000;
-  }
-  
-  textarea {
+}
+
+textarea {
 	/* Alinear los campos de texto multilínea con sus etiquetas */
 	vertical-align: top;
-  
 	/* Proporcionar espacio para escribir texto */
 	height: 5em;
-  }
-  
-  .button {
+}
+
+.button {
 	/* Alinear los botones con los campos de texto */
-	padding-left: 90px; /* mismo tamaño que los elementos de la etiqueta */
-  }
-  
-  button {
+	padding-left: 90px;
+	/* mismo tamaño que los elementos de la etiqueta */
+}
+
+button {
 	/* Este margen adicional representa aproximadamente el mismo espacio que el espacio
 	   entre las etiquetas y sus campos de texto */
 	margin-left: .5em;
-  }
+}
+
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
