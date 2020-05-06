@@ -21,7 +21,7 @@ Class Admin extends CI_Controller {
     {
     	//precarga todos los datos con los que la vista debe iniciar
     	$this->load->model('Twitter_model');
-        //$data['tweets'] = $this->Twitter_model->get_all_tweets();
+        $data['sections'] = $this->Web_model->get_All_Sections();
         $data['_view'] = $view;
 		$this->load->view('layouts/main',$data);
     }
@@ -39,7 +39,7 @@ Class Admin extends CI_Controller {
 			//Esto es para el caso de si la sesión aún está activa
 			if(isset($this->session->userdata['logged_in'])){
 				 //Función propia para cargar la vista indicada con datos precargados
-				$this->load_data_view('admin/login');
+				$this->load_data_view('web/index');
 			}else{
 				$this->load->view('admin/login');
 			}
