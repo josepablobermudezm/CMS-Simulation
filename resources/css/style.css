@@ -19,6 +19,54 @@ a, img {
 	border: none;
 }
 
+.btn_dets{
+	background-color:  #AAA;
+	color: rgb(97, 97, 97);
+	border: none;
+	outline: none;
+	margin-top: 24%;
+}
+.btn_dets:hover{
+	color:#ffffff;
+	cursor: pointer;
+}
+
+.detalles{
+	display: none;
+}
+.servicios{
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+    margin: 10px;
+    width: 40% auto;
+    border-radius: 8px;
+    background-color: #AAA;
+    color: #FFF;
+	font-size: 13px;
+	padding: 4px;
+	overflow: auto;
+}
+
+#serv_titulo{
+	text-align: center;
+	height: 10px;
+	margin: 4px;
+	margin-top: 18px;
+}
+
+#serv_descrip{
+	width: 30%;
+	height: 40px;
+	margin: 4px;
+}
+
+.detalles{
+	position: absolute;
+	width: 85%;
+	word-wrap: break-word;
+	background-color: #AAA;
+}
 #post_box {
 	position: relative;
 	width: auto;
@@ -39,7 +87,7 @@ a, img {
 	margin-top: 30px;
 }
 
-.main_panel1{
+.main_panel1 {
 	position: relative;
 	display: block;
 	width: 95%;
@@ -50,15 +98,10 @@ a, img {
 	padding: 20px;
 }
 
-.main_panel2{
+.main_panel2 {
 	display: none;
-	position: relative;
 	width: 95%;
-	margin: auto;
-	height: auto;
-	overflow: auto;
-	border: 1px solid #253341;
-	padding: 20px;
+	height: 1000px;
 }
 
 #txt_post {
@@ -316,10 +359,10 @@ a, img {
 }
 
 a:link, a:visited, a:active {
-	text-decoration:none;
+	text-decoration: none;
 }
 
-#divBoton{
+#divBoton {
 	overflow: auto;
 	display: inline-block;
 	position: relative;
@@ -346,7 +389,7 @@ ul {
 	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-	text-decoration:none;
+	text-decoration: none;
 }
 
 ul li {
@@ -365,7 +408,6 @@ ul li {
 	transition: all 0.2s;
 	margin: 2px;
 	margin-top: 25px;
-
 }
 
 ul li:hover {
@@ -409,17 +451,136 @@ ul li:hover ul {
 	visibility: visible;
 }
 
-#label{
+#label {
 	font-size: 40px;
-
 }
 
-#label{
+#label {
 	font-size: 40px;
-
 }
 
-#parrafo{
+#parrafo {
 	font-size: 15px;
+}
 
+form {
+	/* Centrar el formulario en la página */
+	margin: 0 auto;
+	width: 400px;
+	/* Esquema del formulario */
+	padding: 1em;
+	border: 1px solid #CCC;
+	border-radius: 1em;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+form li+li {
+	margin-top: 1em;
+}
+
+label {
+	/* Tamaño y alineación uniforme */
+	display: inline-block;
+	width: 90px;
+	text-align: right;
+}
+
+input, textarea {
+	/* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+	   Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+	font: 1em sans-serif;
+	/* Tamaño uniforme del campo de texto */
+	width: 300px;
+	box-sizing: border-box;
+	/* Hacer coincidir los bordes del campo del formulario */
+	border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+	/* Destacado adicional para elementos que tienen el cursor */
+	border-color: #000;
+}
+
+textarea {
+	/* Alinear los campos de texto multilínea con sus etiquetas */
+	vertical-align: top;
+	/* Proporcionar espacio para escribir texto */
+	height: 5em;
+}
+
+.button {
+	/* Alinear los botones con los campos de texto */
+	padding-left: 90px;
+	/* mismo tamaño que los elementos de la etiqueta */
+}
+
+button {
+	/* Este margen adicional representa aproximadamente el mismo espacio que el espacio
+	   entre las etiquetas y sus campos de texto */
+	margin-left: .5em;
+}
+
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
+.row{
+	overflow: auto;
+}
+
+.column {
+	float: left;
+	width: 25%;
+	padding: 10px;
+}
+
+.column img {
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.column img:hover {
+	opacity: 1;
+}
+
+.row:after {
+	overflow: auto;
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.container {
+	position: relative;
+	display: block;
+}
+
+#imgtext {
+	position: absolute;
+	bottom: 15px;
+	left: 15px;
+	color: white;
+	font-size: 20px;
 }

@@ -13,7 +13,13 @@ class Web_model extends CI_Model
                                 FROM secciones
                                 ORDER BY secciones.id_secciones ASC")->result_array();
     }
-    
+
+    public function get_All_Services(){
+        return $this->db->query("SELECT servicio.id_servicio, servicio.descripcion, servicio.titulo, servicio.detalle
+                                FROM servicio
+                                ORDER BY servicio.id_servicio ASC")->result_array();
+    }
+        
     /*public function add_tweet($params)
     {
         $this->db->insert('tweets',$params);
