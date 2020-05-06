@@ -52,9 +52,11 @@ function MyWebSocketCall() {
 
 var global = "div_1";
 
-function ChangeDiv(button) {
-	id = "div_" + button;
+function ChangeDiv(id, src) {
+	id = "div_" + id;
+	console.log(src);
 	document.getElementById(global).className = "main_panel2";
+	document.getElementById("img").src = src;
 	document.getElementById(id).className = "main_panel1";
 	global = id;
 }

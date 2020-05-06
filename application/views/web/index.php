@@ -1,18 +1,18 @@
   <div id="panel_app">
     <div id="user_box">
-      <img src="<?php echo site_url('/resources/photos/baner.jpg'); ?>" style="position: relative;  width:100%; height:100%; " alt="">
+      <img id="img" src="<?php echo site_url('/resources/photos/1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
     </div>
     <div id="divBoton">
       <ul id="button">
         <?php foreach ($sections as $s) { ?>
-          <li id="<?php echo $s['id_secciones']; ?>" onclick="ChangeDiv(<?php echo $s['id_secciones']; ?>)"><a><?php echo $s['nombre']; ?></a></li>
+          <li id="<?php echo $s['id_secciones']; ?>" onclick="ChangeDiv(<?php echo $s['id_secciones']; ?>,'<?php echo site_url('/resources/photos/'); ?>'+'<?php echo $s['imagen']; ?>')"><a><?php echo $s['nombre']; ?></a></li>
         <?php } ?>
       </ul>
     </div>
     <br>
     <div id="divGrande">
       <?php foreach ($sections as $s) { ?>
-        <?php if ($s['nombre'] != 'Servicios' && $s['nombre'] != 'Galeria' && $s['nombre'] != 'Galería' && $s['nombre'] != 'Contacto' && $s['nombre'] != 'Quienes Somos') { ?>
+        <?php if ($s['nombre'] != 'Servicios' && $s['nombre'] != 'Galería' && $s['nombre'] != 'Contacto' && $s['nombre'] != 'Quienes Somos') { ?>
           <div id="div_<?php echo $s['id_secciones']; ?>" class="main_panel1">
             <label id="label"><?php echo $s['titulo']; ?></label>
             <p id="parrafo"><?php echo $s['detalle']; ?></p>
@@ -47,4 +47,3 @@
       </div>
     </div>
   </div>
-
