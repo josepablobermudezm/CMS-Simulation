@@ -45,5 +45,31 @@
           Con nuestro servicio de Anuncios Comerciales, nuestro equipo creativo se tomará el tiempo necesario para comprender tu marca y encontrar la forma más
           efectiva que transmitir el mensaje a tu audiencia. Desde estrategia hasta la implementación, tenemos todas las respuestas</p>
       </div>
+      <div id="after_submit"></div>
+      <div id="div_6" class="main_panel2">
+          <?php echo form_open_multipart('web/correo/'); ?>
+          <div class="row">
+            <label class="required" for="name">Your name:</label><br />
+            <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+            <span id="name_validation" class="error_message"></span>
+          </div>
+          <div class="row">
+            <label class="required" for="email">Your email:</label><br />
+            <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+            <span id="email_validation" class="error_message"></span>
+          </div>
+          <div class="row">
+            <label class="required" for="email">Subject:</label><br />
+            <input id="subject" class="input" name="subject" type="text" value="" size="30" /><br />
+            <span id="email_validation" class="error_message"></span>
+          </div>
+          <div class="row">
+            <label class="required" for="message">Your message:</label><br />
+            <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+            <span id="message_validation" class="error_message"></span>
+            <input id="submit_button" type="submit" value="Send email" />
+          </div>
+          <?php echo form_close(); ?>
+      </div>
     </div>
   </div>

@@ -1,25 +1,41 @@
 <?php
 
-class Web extends CI_Controller {
+class Web extends CI_Controller
+{
 
-	function __construct()
+    function __construct()
     {
         parent::__construct();
         $this->load->model('Web_model');
         $this->load->library('session');
     }
 
-	function index($sections_data = array())
-	{
-        if($sections_data == null)
+    function index($sections_data = array())
+    {
+        if ($sections_data == null)
             $data['sections'] = $this->Web_model->get_All_Sections();
         else
             $data['sections'] = $sections_data;
 
         $data['_view'] = 'web/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
-    
+
+    function correo()
+    {
+        if (isset($_POST['mail']) && isset($_POST['name']) && isset($_POST['message']) && isset($_POST['subject'])) {
+            $to = "josepablobermudezm@gmail.com";
+            $from = "From:" . $_POST['mail'];
+            $subject = $_POST['subject'];
+            $message = $_POST['message'];
+
+            mail($to, $subject, $message, $from);
+            $this->index();
+        } else {
+            $this->index();
+        }
+    }
+
 
     /*function process()
     {
@@ -96,5 +112,4 @@ class Web extends CI_Controller {
 
         $this->index();
     }*/
-
 }
