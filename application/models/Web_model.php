@@ -19,6 +19,12 @@ class Web_model extends CI_Model
                                 FROM servicio
                                 ORDER BY servicio.id_servicio ASC")->result_array();
     }
+
+    public function add_email($params)
+    {
+        $this->db->insert('correo',$params);
+        return $this->db->insert_id();
+    }
         
     /*public function add_tweet($params)
     {

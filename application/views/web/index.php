@@ -1,6 +1,6 @@
   <div id="panel_app">
     <div id="user_box">
-      <img id="img" src="<?php echo site_url('/resources/photos/1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
+      <img id="img" src="<?php echo site_url('/resources/photos/img1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
     </div>
     <div id="divBoton">
       <ul id="button">
@@ -96,11 +96,6 @@
         <div class="row">
           <label class="required" for="email">Your email:</label><br />
           <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
-          <span id="email_validation" class="error_message"></span>
-        </div>
-        <div class="row">
-          <label class="required" for="email">Subject:</label><br />
-          <input id="subject" class="input" name="subject" type="text" value="" size="30" /><br />
           <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
