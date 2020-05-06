@@ -19,7 +19,7 @@
           </div>
         <?php } ?>
       <?php } ?>
-      
+
       <div id="div_5" class="main_panel2">
         <label id="label">Servicios</label>
         <br>
@@ -31,7 +31,7 @@
               </div>
               <div id="serv_descrip">
                 <p id="descripcion"><?php echo $s['descripcion']; ?>
-                  <span class="detalles" id='det_<?php echo $s['id_servicio']; ?>'><br/>hdsafligsdflgasldgfalisgfilasdugfoulaisgyf</span>
+                  <span class="detalles" id='det_<?php echo $s['id_servicio']; ?>'><br />hdsafligsdflgasldgfalisgfilasdugfoulaisgyf</span>
                 </p>
                 <button class="btn_dets" onclick="MostrarDetalle(this,'det_<?php echo $s['id_servicio']; ?>')">Ver más</button>
               </div>
@@ -69,30 +69,55 @@
       <div id="after_submit"></div>
       <div id="div_6" class="main_panel2">
         <?php echo form_open_multipart('web/correo/'); ?>
-        <div class="div_correo">
-          <div class="row">
-            <label class="required" for="name">Your name:</label><br />
-            <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
-            <span id="name_validation" class="error_message"></span>
-          </div>
-          <div class="row">
-            <label class="required" for="email">Your email:</label><br />
-            <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
-            <span id="email_validation" class="error_message"></span>
-          </div>
-          <div class="row">
-            <label class="required" for="email">Subject:</label><br />
-            <input id="subject" class="input" name="subject" type="text" value="" size="30" /><br />
-            <span id="email_validation" class="error_message"></span>
-          </div>
-          <div class="row">
-            <label class="required" for="message">Your message:</label><br />
-            <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
-            <span id="message_validation" class="error_message"></span>
-            <input id="submit_button" type="submit" value="Send email" />
-          </div>
+        <div class="row">
+          <label class="required" for="name">Your name:</label><br />
+          <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+          <span id="name_validation" class="error_message"></span>
+        </div>
+        <div class="row">
+          <label class="required" for="email">Your email:</label><br />
+          <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+          <span id="email_validation" class="error_message"></span>
+        </div>
+        <div class="row">
+          <label class="required" for="email">Subject:</label><br />
+          <input id="subject" class="input" name="subject" type="text" value="" size="30" /><br />
+          <span id="email_validation" class="error_message"></span>
+        </div>
+        <div class="row">
+          <label class="required" for="message">Your message:</label><br />
+          <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+          <span id="message_validation" class="error_message"></span>
+          <input id="submit_button" type="submit" value="Send email" />
         </div>
         <?php echo form_close(); ?>
       </div>
+
+      <div id="div_4" class="main_panel2">
+        <div class="container">
+          <img id="expandedImg" src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" style="width:100%">
+          <div id="imgDescription"></div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <!-- en el alt va el comentario agregado-->
+            <img src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" style="position: relative;  width:100%; height:100%;" alt="Nature" onclick="enlargeImg(this);">
+          </div>
+          <div class="column">
+            <img src="<?php echo site_url('/resources/photos/f2.jpg'); ?>" style="position: relative;  width:100%; height:100%;" alt="Snow" onclick="enlargeImg(this);">
+          </div>
+          <div class="column">
+            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" style="position: relative;  width:100%; height:100%;" alt="Mountains" onclick="enlargeImg(this);">
+          </div>
+          <div class="column">
+            <img src="<?php echo site_url('/resources/photos/f4.jpg'); ?>" style="position: relative;  width:100%; height:100%;" alt="Lights" onclick="enlargeImg(this);">
+          </div>
+          <div class="column">
+            <img src="<?php echo site_url('/resources/photos/f5.jpg'); ?>" style="position: relative;  width:100%; height:100%;" alt="Lights" onclick="enlargeImg(this);">
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   </div>

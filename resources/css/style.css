@@ -19,47 +19,48 @@ a, img {
 	border: none;
 }
 
-.btn_dets{
-	background-color:  #AAA;
+.btn_dets {
+	background-color: #AAA;
 	color: rgb(97, 97, 97);
 	border: none;
 	outline: none;
 }
-.btn_dets:hover{
-	color:#ffffff;
+
+.btn_dets:hover {
+	color: #ffffff;
 	cursor: pointer;
 }
 
-.detalles{
+.detalles {
 	display: none;
 }
-.servicios{
+
+.servicios {
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
-    margin: 10px;
-    width: 40% auto;
-    border-radius: 8px;
-    background-color: #AAA;
-    color: #FFF;
+	margin: 10px;
+	width: 40% auto;
+	border-radius: 8px;
+	background-color: #AAA;
+	color: #FFF;
 	font-size: 13px;
 	padding: 4px;
 	overflow: auto;
 }
 
-#serv_titulo{
+#serv_titulo {
 	text-align: center;
 	height: 10px;
 	margin: 4px;
 	margin-top: 18px;
 }
 
-#serv_descrip{
+#serv_descrip {
 	width: 70%;
 	height: 40px;
 	margin: 4px;
 }
-
 
 #post_box {
 	position: relative;
@@ -94,13 +95,8 @@ a, img {
 
 .main_panel2 {
 	display: none;
-	position: relative;
 	width: 95%;
-	margin: auto;
-	height: auto;
-	overflow: auto;
-	border: 1px solid #253341;
-	padding: 20px;
+	height: 1000px;
 }
 
 #txt_post {
@@ -543,4 +539,57 @@ input[type=submit] {
 
 input[type=submit]:hover {
 	background-color: #45a049;
+}
+
+.column {
+	float: left;
+	width: 25%;
+	padding: 10px;
+}
+
+/* Style the images inside the grid */
+
+.column img {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.column img:hover {
+	opacity: 1;
+}
+
+/* Clear floats after the columns */
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+
+.container {
+	position: relative;
+	display: block;
+}
+
+/* Expanding image text */
+
+#imgtext {
+	position: absolute;
+	bottom: 15px;
+	left: 15px;
+	color: white;
+	font-size: 20px;
+}
+
+/* Closable button inside the image */
+
+.closebtn {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	color: white;
+	font-size: 35px;
+	cursor: pointer;
 }

@@ -71,3 +71,11 @@ function ChangeDiv(id, src) {
 	document.getElementById(id).className = "main_panel1";
 	global = id;
 }
+
+
+function enlargeImg(imgs) {
+	var enlarge = document.getElementById("expandedImg");
+	var imgText = document.getElementById("imgDescription");
+	enlarge.src = imgs.src;
+	imgText.innerHTML = imgs.alt;
+  }
