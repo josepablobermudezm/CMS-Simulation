@@ -541,16 +541,18 @@ input[type=submit]:hover {
 	background-color: #45a049;
 }
 
+.row{
+	overflow: auto;
+}
+
 .column {
 	float: left;
 	width: 25%;
 	padding: 10px;
 }
 
-/* Style the images inside the grid */
-
 .column img {
-	opacity: 0.8;
+	opacity: 0.6;
 	cursor: pointer;
 }
 
@@ -558,22 +560,17 @@ input[type=submit]:hover {
 	opacity: 1;
 }
 
-/* Clear floats after the columns */
-
 .row:after {
+	overflow: auto;
 	content: "";
 	display: table;
 	clear: both;
 }
 
-/* The expanding image container (positioning is needed to position the close button and the text) */
-
 .container {
 	position: relative;
 	display: block;
 }
-
-/* Expanding image text */
 
 #imgtext {
 	position: absolute;
@@ -581,15 +578,4 @@ input[type=submit]:hover {
 	left: 15px;
 	color: white;
 	font-size: 20px;
-}
-
-/* Closable button inside the image */
-
-.closebtn {
-	position: absolute;
-	top: 10px;
-	right: 15px;
-	color: white;
-	font-size: 35px;
-	cursor: pointer;
 }
