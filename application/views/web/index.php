@@ -1,4 +1,3 @@
-<?php if ($this->session->userdata['logged_in']['logged_in'] == TRUE) { ?>
   <div id="panel_app">
     <div id="user_box">
       <img src="<?php echo site_url('/resources/photos/baner.jpg'); ?>" style="position: relative;  width:100%; height:100%; " alt="">
@@ -49,9 +48,3 @@
     </div>
   </div>
 
-
-<?php
-} else {
-  header("location: " . base_url()); //dirección de arranque especificada en config.php y luego en routes.php
-}
-?>
