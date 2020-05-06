@@ -27,6 +27,25 @@
           <?php foreach ($servicios as $s) { ?>
             <div class="servicios">
               <div id="serv_titulo">
+                <label><?php echo $s['titulo']; ?></label>
+              </div>
+              <div id="serv_descrip">
+                <p id="descripcion"><?php echo $s['descripcion']; ?></p>
+                <div class="detalles" id='det_<?php echo $s['id_servicio']; ?>'><?php echo $s['detalle']; ?></div>
+              </div>
+              <div><button class="btn_dets" onclick="MostrarDetalle(this,'det_<?php echo $s['id_servicio']; ?>')">Ver más</button></div>
+            </div>
+          <?php } ?>
+        </div>
+      </div>
+
+      <div id="div_5" class="main_panel2">
+        <label id="label">Servicios</label>
+        <br>
+        <div>
+          <?php foreach ($servicios as $s) { ?>
+            <div class="servicios">
+              <div id="serv_titulo">
                 <label><?php echo $s['titulo']; ?>:</label>
               </div>
               <div id="serv_descrip">
