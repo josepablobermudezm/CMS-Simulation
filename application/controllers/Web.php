@@ -36,9 +36,8 @@ class Web extends CI_Controller
             );
 
             $this->Web_model->add_email($params);
+            $this->index();
         }
-
-        $this->index();
     }
 
 

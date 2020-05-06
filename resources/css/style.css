@@ -519,7 +519,7 @@ textarea {
 	/* mismo tamaño que los elementos de la etiqueta */
 }
 
-button {
+.button {
 	/* Este margen adicional representa aproximadamente el mismo espacio que el espacio
 	   entre las etiquetas y sus campos de texto */
 	margin-left: .5em;

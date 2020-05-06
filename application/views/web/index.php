@@ -89,20 +89,19 @@
       <div id="div_6" class="main_panel2">
         <?php echo form_open_multipart('web/correo/'); ?>
         <div class="row">
-          <label class="required" for="name">Your name:</label><br />
-          <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+          <input id="name" class="input" name="name" type="text" value="" placeholder="Nombre" size="30" /><br />
           <span id="name_validation" class="error_message"></span>
         </div>
         <div class="row">
-          <label class="required" for="email">Your email:</label><br />
-          <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+          <input id="email" class="input" name="email" type="text" value="" placeholder="Correo" size="30" /><br />
           <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
-          <label class="required" for="message">Your message:</label><br />
-          <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+          <textarea id="message" class="input" name="message" placeholder="Mensaje" rows="7" cols="30"></textarea><br />
           <span id="message_validation" class="error_message"></span>
-          <input id="submit_button" type="submit" value="Send email" />
+        </div>
+        <div class="row">
+          <input id="submit_button" type="submit" value="Enviar" />
         </div>
         <?php echo form_close(); ?>
       </div>
@@ -121,7 +120,7 @@
             <img src="<?php echo site_url('/resources/photos/f2.jpg'); ?>" alt="Snow" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" alt="Mountains" class="Imágenes"  onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" alt="Mountains" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
             <img src="<?php echo site_url('/resources/photos/f4.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
@@ -136,7 +135,7 @@
             <img src="<?php echo site_url('/resources/photos/f7.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
           </div>
           <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f8.jpg'); ?>"  alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
+            <img src="<?php echo site_url('/resources/photos/f8.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
           </div>
         </div>
       </div>
