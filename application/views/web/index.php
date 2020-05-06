@@ -19,6 +19,27 @@
           </div>
         <?php } ?>
       <?php } ?>
+      
+      <div id="div_5" class="main_panel2">
+        <label id="label">Servicios</label>
+        <br>
+        <div>
+          <?php foreach ($servicios as $s) { ?>
+            <div class="servicios">
+              <div id="serv_titulo">
+                <label><?php echo $s['titulo']; ?>:</label>
+              </div>
+              <div id="serv_descrip">
+                <p id="descripcion"><?php echo $s['descripcion']; ?>
+                  <span class="detalles" id='det_<?php echo $s['id_servicio']; ?>'><br/>hdsafligsdflgasldgfalisgfilasdugfoulaisgyf</span>
+                </p>
+                <button class="btn_dets" onclick="MostrarDetalle(this,'det_<?php echo $s['id_servicio']; ?>')">Ver más</button>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+      </div>
+
       <div id="div_2" class="main_panel2">
         <label id="label">Quienes Somos</label>
         <p id="parrafo">Transformación de marcas

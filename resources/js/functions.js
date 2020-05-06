@@ -5,6 +5,17 @@ function load() {
 	MyWebSocketCall(); //función propia que gestionará la comunicación con el WebSocket 
 	console.log("ready!");
 }
+
+function MostrarDetalle(button, id){
+	if(button.innerHTML == "Ver más"){
+		document.getElementById(id).style = "display: block;";
+		button.innerHTML = "Ver menos";
+	}
+	else{
+		document.getElementById(id).style = "display: none;";
+		button.innerHTML = "Ver más"
+	}
+}
 /* función send(): se usa para enviar un aviso al WebSocket. 
    Con solo enviar un aviso será suficiente para ejecutar un “update” a todas las páginas de los usuarios conectados.
 	No es necesario enviar el contenido del Tweet ya que este está en la BD.
@@ -36,7 +47,7 @@ function MyWebSocketCall() {
 
 		ws.onmessage = function (evt) {
 			//cada vez que alguien envía un msj se actualiza la ventana de tweets de forma asincrónica 
-			recargarElemento("http://localhost/lab6/twitter/index", "main_panel");
+			recargarElemento("http://localhost/Proyecto/web/index", "main_panel");
 			console.log("Message is received: " + evt.data);
 			//evt.data contiene el msj recibido 
 		};
