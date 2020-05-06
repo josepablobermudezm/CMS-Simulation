@@ -1,17 +1,12 @@
 <?php if ($this->session->userdata['logged_in']['logged_in'] == TRUE) { ?>
-
   <div id="panel_app">
-
     <div id="user_box">
       <img src="<?php echo site_url('/resources/photos/baner.jpg'); ?>" style="position: relative;  width:100%; height:100%; " alt="">
     </div>
-
     <div id="divBoton">
       <ul id="button">
         <?php foreach ($sections as $s) { ?>
-
           <li id="<?php echo $s['id_secciones']; ?>" onclick="ChangeDiv(<?php echo $s['id_secciones']; ?>)"><a><?php echo $s['nombre']; ?></a></li>
-
         <?php } ?>
       </ul>
     </div>
@@ -25,7 +20,6 @@
           </div>
         <?php } ?>
       <?php } ?>
-
       <div id="div_2" class="main_panel2">
         <label id="label">Quienes Somos</label>
         <p id="parrafo">Transformación de marcas
@@ -52,7 +46,6 @@
           Con nuestro servicio de Anuncios Comerciales, nuestro equipo creativo se tomará el tiempo necesario para comprender tu marca y encontrar la forma más
           efectiva que transmitir el mensaje a tu audiencia. Desde estrategia hasta la implementación, tenemos todas las respuestas</p>
       </div>
-
     </div>
   </div>
 
