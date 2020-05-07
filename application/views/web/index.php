@@ -108,35 +108,16 @@
 
       <div id="div_4" class="main_panel2">
         <div class="container">
-          <img id="expandedImg" src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" style="width:100%">
+          <img id="expandedImg" src="<?php echo site_url('/resources/photos/') . $images[0]['imagen'];?>"  alt="Descripcion: <?php echo $images[0]['descripcion']; ?>" style="width:100%">
           <div id="imgDescription"></div>
         </div>
 
         <div class="row">
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" alt="Nature" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f2.jpg'); ?>" alt="Snow" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" alt="Mountains" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f4.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f5.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f6.jpg'); ?>" alt="Mountains" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f7.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f8.jpg'); ?>" alt="Lights" class="Imágenes" onclick="enlargeImg(this);">
-          </div>
+          <?php foreach ($images as $i) { ?>
+            <div class="column">
+              <img src="<?php echo site_url('/resources/photos/') . $i['imagen'];?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this);">
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>

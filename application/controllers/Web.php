@@ -17,6 +17,7 @@ class Web extends CI_Controller
         else
             $data['sections'] = $sections_data;
         $data['servicios'] = $this->Web_model->get_All_Services();
+        $data['images'] = $this->Web_model->get_All_Images();
         $data['_view'] = 'web/index';
         $this->load->view('layouts/main', $data);
     }

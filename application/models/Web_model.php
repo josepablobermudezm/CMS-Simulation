@@ -20,6 +20,12 @@ class Web_model extends CI_Model
                                 ORDER BY servicio.id_servicio ASC")->result_array();
     }
 
+    public function get_All_Images(){
+        return $this->db->query("SELECT imagenes.id_imagen, imagenes.imagen, imagenes.descripcion
+                                FROM imagenes
+                                ORDER BY imagenes.id_imagen ASC")->result_array();
+    }
+
     public function add_email($params)
     {
         $this->db->insert('correo',$params);
