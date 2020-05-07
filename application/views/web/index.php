@@ -46,7 +46,6 @@
           <?php } ?>
         </div>
       </div>
-
       <div id="div_2" class="main_panel2">
         <label id="label">Quienes Somos</label>
         <p id="parrafo">Transformación de marcas
