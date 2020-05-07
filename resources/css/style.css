@@ -566,7 +566,9 @@ input[type=submit] {
 	color: white;
 	padding: 12px 20px;
 	border: none;
+	outline: none;
 	cursor: pointer;
+	width: 100%;
 }
 
 input[type=submit]:hover {

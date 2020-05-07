@@ -8,10 +8,9 @@ class Web extends CI_Controller
         parent::__construct();
         $this->load->model('Web_model');
         $this->load->library('session');
-        
     }
     public $correo = false;
-    
+
     function index($sections_data = array())
     {
         if ($sections_data == null)
@@ -21,7 +20,7 @@ class Web extends CI_Controller
         $data['servicios'] = $this->Web_model->get_All_Services();
         $data['images'] = $this->Web_model->get_All_Images();
         $data['quienesSomos'] = $this->Web_model->get_QuienesSomos();
-        if($this->correo){
+        if ($this->correo) {
             $data['message_display'] = 'Correo electrónico enviado exitosamente';
         }
         $data['_view'] = 'web/index';
@@ -36,18 +35,17 @@ class Web extends CI_Controller
         $this->form_validation->set_rules('name', 'Post/name', 'required|max_length[50]');
         $this->form_validation->set_rules('message', 'Post/message', 'required|max_length[2000]');
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run() && $_POST['email'] != "" && $_POST['name'] != "" && $_POST['message'] != "") {
             $params = array(
                 'nombre' => $this->input->post('name'),
                 'correo' => $this->input->post('email'),
                 'mensaje' => $this->input->post('message'),
             );
-           
+
             $this->Web_model->add_email($params);
             $this->correo = true;
-            redirect('/web', 'refresh');
-            $this->index();
         }
+        redirect('/web', 'refresh');
     }
 
 
