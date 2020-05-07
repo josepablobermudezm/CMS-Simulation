@@ -27,7 +27,6 @@
           </div>
         <?php } ?>
       <?php } ?>
-
       <div id="div_5" class="main_panel2">
         <label id="label">Servicios</label>
         <br>
