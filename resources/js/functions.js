@@ -71,11 +71,28 @@ function ChangeDiv(id, src) {
 	global = id;
 }
 
+function next(){
+	var ArrayImg = document.getElementsByClassName("Imágenes");
 
-function enlargeImg(imgs, index) {
+	for(var i = 0; i < ArrayImg.length; i++){
+		console.log(ArrayImg[i].src);
+	}
+
+}
+
+function before(){
+	var ArrayImg = document.getElementsByClassName("Imágenes");
+
+	for(var i = 0; i < ArrayImg.length; i++){
+		console.log(ArrayImg[i].src);
+	}
+
+}
+
+
+function enlargeImg(imgs) {
 	var enlarge = document.getElementById("expandedImg");
 	var imgText = document.getElementById("imgDescription");
 	enlarge.src = imgs.src;
 	imgText.innerHTML = imgs.alt;
-	console.log(index);
   }
