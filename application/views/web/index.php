@@ -1,11 +1,10 @@
-  
-  <?php 
-    $message = "";
-    if(isset($message_display)){
-      $message = $message_display;
-    }
+  <?php
+  $message = "";
+  if (isset($message_display)) {
+    $message = $message_display;
+  }
   ?>
-  <?php echo ($message != "")? "<script> alertify.set('notifier', 'position', 'top-right'); alertify.success('$message');</script>" : "";?>
+  <?php echo ($message != "") ? "<script> alertify.set('notifier', 'position', 'top-right'); alertify.success('$message');</script>" : ""; ?>
   <div id="panel_app">
     <div id="user_box">
       <img id="img" src="<?php echo site_url('/resources/photos/img1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
@@ -47,29 +46,7 @@
       </div>
       <div id="div_2" class="main_panel2">
         <label id="label">Quienes Somos</label>
-        <p id="parrafo">Transformación de marcas
-
-          Nos apasiona ayudar a las marcas a encontrar su voz creativa. Fundado(a) en el año 2017, nuestro(a) Agencia de publicidad busca ayudar a nuestros clientes a
-          triunfar en un mundo en constante cambio y a que aprovechen sus fortalezas para crear un mapa personalizado hacia el éxito. Estamos aquí para hacer que tu
-          vida sea más fácil: consúltanos cómo podemos ayudarte.
-          Nos enfocamos en entregar nuestros productos de una forma virtual mediante el uso de nubes de información.
-
-          LO HACEMOS BIEN
-
-          Nuestro enfoque a Fotografía y video le dará a tu negocio el toque extra de adrenalina que necesita. Ya sea que tengamos que comenzar desde cero o que nos
-          contrates para asesorarte en tu visión creativa, trabajaremos juntos para lograr los mejores resultados posibles.
-
-          CAMPAÑAS PUBLICITARIAS
-          Deja que nos encarguemos de todo
-          Impulsa tu identidad de marca y no pierdas potenciales clientes con nuestro extraordinario servicio de publicidad. Trabajamos juntos para combinar nuestras
-          visiones creativas e idear algo realmente espectacular. El costo por una campaña de publicidad depende de cuantas personas quiera el cliente alcanzar, pero
-          se pueden estimar unos 10$ por cada 1000 clientes potenciales alcanzados.
-
-          ANUNCIOS COMERCIALES
-          Resultados que te encantarán
-
-          Con nuestro servicio de Anuncios Comerciales, nuestro equipo creativo se tomará el tiempo necesario para comprender tu marca y encontrar la forma más
-          efectiva que transmitir el mensaje a tu audiencia. Desde estrategia hasta la implementación, tenemos todas las respuestas</p>
+        <p id="parrafo"><?php echo $quienesSomos[0]['detalle']; ?></p>
       </div>
       <div id="after_submit"></div>
       <div id="div_6" class="main_panel2">
@@ -94,15 +71,15 @@
 
       <div id="div_4" class="main_panel2">
         <div class="container">
-          <img id="expandedImg" src="<?php echo site_url('/resources/photos/') . $images[0]['imagen']; ?>" alt="Descripcion: <?php echo $images[0]['descripcion']; ?>" >
+          <img id="expandedImg" src="<?php echo site_url('/resources/photos/') . $images[0]['imagen']; ?>" style="height:650px" alt="Descripcion: <?php echo $images[0]['descripcion']; ?>">
+          <span onclick="before(this)" class="beforebtn">&laquo;</span>
+          <span onclick="next(this)" class="nextbtn">&raquo;</span>
           <div id="imgDescription"></div>
         </div>
 
         <div class="row">
           <?php foreach ($images as $i) { ?>
             <div class="column">
-              <span onclick="next(this)" class="nextbtn">&raquo;</span>
-              <span onclick="before(this)" class="beforebtn">&laquo;</span>
               <img src="<?php echo site_url('/resources/photos/') . $i['imagen']; ?>" id="<?php echo $i['imagen']; ?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this);">
             </div>
           <?php } ?>

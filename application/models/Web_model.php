@@ -26,6 +26,12 @@ class Web_model extends CI_Model
                                 ORDER BY imagenes.id_imagen ASC")->result_array();
     }
 
+    public function get_QuienesSomos(){
+        return $this->db->query("SELECT secciones.detalle
+                                FROM secciones
+                                WHERE secciones.titulo = 'Quienes Somos'")->result_array();
+    }
+
     public function add_email($params)
     {
         $this->db->insert('correo',$params);
