@@ -547,27 +547,28 @@ input[type=submit]:hover {
 }
 
 .row{
-	position: relative;
-	overflow: auto;
-	width: 98%;
-	padding: 8px;
-	display: flex;
+	overflow-y: hidden; 
+	overflow-x: auto;
+	width: auto;
+	height: 50%;
+	padding: 10px;
+	white-space: nowrap;
 	background-color: #253341;
 }
 
 .row > div {
-	border: 1px solid black;
-	background-color: #253341;
-	border: 1px solid #253341;
-	margin: 5px;
+	display: inline-block;
+	height:50%;
+	width:10%;
+	margin: 0 10px 0 0;
 }
-
 
 .Imágenes{
 	position: relative;  
 	width:100%; 
 	height: 100%;
 }
+
 
 .column {
 	width: 50%;
