@@ -592,8 +592,8 @@ input[type=submit]:hover {
 
 .Imágenes {
 	position: relative;
-	width: 110px;
-	height: 75px;
+	width: 100%;
+	height: 100%;
 }
 
 .column {
