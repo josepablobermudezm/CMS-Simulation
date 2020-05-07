@@ -72,9 +72,10 @@ function ChangeDiv(id, src) {
 }
 
 
-function enlargeImg(imgs) {
+function enlargeImg(imgs, index) {
 	var enlarge = document.getElementById("expandedImg");
 	var imgText = document.getElementById("imgDescription");
 	enlarge.src = imgs.src;
 	imgText.innerHTML = imgs.alt;
+	console.log(index);
   }

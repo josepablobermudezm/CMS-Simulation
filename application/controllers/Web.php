@@ -44,6 +44,7 @@ class Web extends CI_Controller
            
             $this->Web_model->add_email($params);
             $this->correo = true;
+            redirect('/web', 'refresh');
             $this->index();
         }
     }

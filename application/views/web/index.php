@@ -99,13 +99,17 @@
         </div>
 
         <div class="row">
-          <?php foreach ($images as $i) { ?>
+          <?php foreach ($images as $i) { 
+            $index = 0;
+            ?>
             <div class="column">
               <span onclick="this.parentElement.style.display='none'" class="nextbtn">&raquo;</span>
               <span onclick="this.parentElement.style.display='none'" class="beforebtn">&laquo;</span>
-              <img src="<?php echo site_url('/resources/photos/') . $i['imagen']; ?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this);">
+              <img src="<?php echo site_url('/resources/photos/') . $i['imagen']; ?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this, $index);">
             </div>
-          <?php } ?>
+          <?php 
+          $index++;
+        } ?>
         </div>
       </div>
     </div>
