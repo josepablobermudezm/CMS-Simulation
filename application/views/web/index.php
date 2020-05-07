@@ -1,6 +1,6 @@
   <div id="panel_app">
     <div id="user_box">
-      <img id="img" src="<?php echo site_url('/resources/photos/1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
+      <img id="img" src="<?php echo site_url('/resources/photos/img1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
     </div>
     <div id="divBoton">
       <ul id="button">
@@ -89,60 +89,35 @@
       <div id="div_6" class="main_panel2">
         <?php echo form_open_multipart('web/correo/'); ?>
         <div class="row">
-          <label class="required" for="name">Your name:</label><br />
-          <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+          <input id="name" class="input" name="name" type="text" value="" placeholder="Nombre" size="30" /><br />
           <span id="name_validation" class="error_message"></span>
         </div>
         <div class="row">
-          <label class="required" for="email">Your email:</label><br />
-          <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+          <input id="email" class="input" name="email" type="text" value="" placeholder="Correo" size="30" /><br />
           <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
-          <label class="required" for="email">Subject:</label><br />
-          <input id="subject" class="input" name="subject" type="text" value="" size="30" /><br />
-          <span id="email_validation" class="error_message"></span>
-        </div>
-        <div class="row">
-          <label class="required" for="message">Your message:</label><br />
-          <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+          <textarea id="message" class="input" name="message" placeholder="Mensaje" rows="7" cols="30"></textarea><br />
           <span id="message_validation" class="error_message"></span>
-          <input id="submit_button" type="submit" value="Send email" />
+        </div>
+        <div class="row">
+          <input id="submit_button" type="submit" value="Enviar" />
         </div>
         <?php echo form_close(); ?>
       </div>
 
       <div id="div_4" class="main_panel2">
         <div class="container">
-          <img id="expandedImg" src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" style="width:100%">
+          <img id="expandedImg" src="<?php echo site_url('/resources/photos/') . $images[0]['imagen'];?>"  alt="Descripcion: <?php echo $images[0]['descripcion']; ?>" style="width:100%">
           <div id="imgDescription"></div>
         </div>
 
         <div class="row">
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f1.jpg'); ?>" style=" float: left; width: 25%; padding: 10px; position: relative;  width:70%; height:70%;" alt="Nature" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f2.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Snow" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f3.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Mountains" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f4.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f5.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f6.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Mountains" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f7.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
-          </div>
-          <div class="column">
-            <img src="<?php echo site_url('/resources/photos/f8.jpg'); ?>" style="position: relative;  width:70%; height:70%;" alt="Lights" onclick="enlargeImg(this);">
-          </div>
+          <?php foreach ($images as $i) { ?>
+            <div class="column">
+              <img src="<?php echo site_url('/resources/photos/') . $i['imagen'];?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this);">
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>

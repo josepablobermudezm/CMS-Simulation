@@ -543,7 +543,7 @@ textarea {
 	/* mismo tamaño que los elementos de la etiqueta */
 }
 
-button {
+.button {
 	/* Este margen adicional representa aproximadamente el mismo espacio que el espacio
 	   entre las etiquetas y sus campos de texto */
 	margin-left: .5em;
@@ -571,13 +571,31 @@ input[type=submit]:hover {
 }
 
 .row{
-	overflow: auto;
+	overflow-y: hidden; 
+	overflow-x: auto;
+	width: auto;
+	height: 50%;
+	padding: 10px;
+	white-space: nowrap;
+	background-color: #253341;
 }
 
+.row > div {
+	display: inline-block;
+	height:50%;
+	width:10%;
+	margin: 0 10px 0 0;
+}
+
+.Imágenes{
+	position: relative;  
+	width:100%; 
+	height: 100%;
+}
+
+
 .column {
-	float: left;
-	width: 25%;
-	padding: 10px;
+	width: 50%;
 }
 
 .column img {
@@ -592,7 +610,6 @@ input[type=submit]:hover {
 .row:after {
 	overflow: auto;
 	content: "";
-	display: table;
 	clear: both;
 }
 
