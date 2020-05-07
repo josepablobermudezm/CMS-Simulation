@@ -6,12 +6,12 @@ function load() {
 	console.log("ready!");
 }
 
-function MostrarDetalle(button, id){
-	if(button.innerHTML == "Ver más"){
+function MostrarDetalle(button, id) {
+	if (button.innerHTML == "Ver más") {
 		document.getElementById(id).style = "display: block;";
 		button.innerHTML = "Ver menos";
 	}
-	else{
+	else {
 		document.getElementById(id).style = "display: none;";
 		button.innerHTML = "Ver más"
 	}
@@ -71,22 +71,38 @@ function ChangeDiv(id, src) {
 	global = id;
 }
 
-function next(){
+function next() {
 	var ArrayImg = document.getElementsByClassName("Imágenes");
 
 	for(var i = 0; i < ArrayImg.length; i++){
-		console.log(ArrayImg[i].src);
+		if(ArrayImg[i].src == document.getElementById("expandedImg").src){
+			if(i+1 < ArrayImg.length){
+				document.getElementById("expandedImg").src = ArrayImg[i+1].src;
+				break;
+			}
+			if(i == 9){
+				document.getElementById("expandedImg").src = ArrayImg[0].src;
+				break;
+			}
+		}
 	}
-
 }
 
-function before(){
+function before() {
 	var ArrayImg = document.getElementsByClassName("Imágenes");
 
 	for(var i = 0; i < ArrayImg.length; i++){
-		console.log(ArrayImg[i].src);
+		if(ArrayImg[i].src == document.getElementById("expandedImg").src){
+			if(i-1 >= 0){
+				document.getElementById("expandedImg").src = ArrayImg[i-1].src;
+				break;
+			}
+			if(i == 0){
+				document.getElementById("expandedImg").src = ArrayImg[9].src;
+				break;
+			}
+		}
 	}
-
 }
 
 
@@ -95,4 +111,4 @@ function enlargeImg(imgs) {
 	var imgText = document.getElementById("imgDescription");
 	enlarge.src = imgs.src;
 	imgText.innerHTML = imgs.alt;
-  }
+}

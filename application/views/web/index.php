@@ -94,16 +94,16 @@
 
       <div id="div_4" class="main_panel2">
         <div class="container">
-          <img id="expandedImg" src="<?php echo site_url('/resources/photos/') . $images[0]['imagen']; ?>" alt="Descripcion: <?php echo $images[0]['descripcion']; ?>" style="width:100%">
+          <img id="expandedImg" src="<?php echo site_url('/resources/photos/') . $images[0]['imagen']; ?>" alt="Descripcion: <?php echo $images[0]['descripcion']; ?>" >
           <div id="imgDescription"></div>
         </div>
 
         <div class="row">
           <?php foreach ($images as $i) { ?>
             <div class="column">
-              <span onclick="next()" class="nextbtn">&raquo;</span>
-              <span onclick="before()" class="beforebtn">&laquo;</span>
-              <img src="<?php echo site_url('/resources/photos/') . $i['imagen']; ?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this);">
+              <span onclick="next(this)" class="nextbtn">&raquo;</span>
+              <span onclick="before(this)" class="beforebtn">&laquo;</span>
+              <img src="<?php echo site_url('/resources/photos/') . $i['imagen']; ?>" id="<?php echo $i['imagen']; ?>" alt="Descripcion: <?php echo $i['descripcion']; ?>" class="Imágenes" onclick="enlargeImg(this);">
             </div>
           <?php } ?>
         </div>
