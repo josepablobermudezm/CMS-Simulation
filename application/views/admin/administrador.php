@@ -2,9 +2,8 @@
 
   <div id="panel_app">
 
-    <div id="user_box">
-      <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['users_id']); ?>" title="Editar Perfil"> <?php echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['photo']) . "' alt='photo_profile' width=50 height=50 id='photo_profile' />" . "<span>HOLA! " . $this->session->userdata['logged_in']['realname'] . ". ✎</span>"; ?> </a>
-
+    <div id="user_box2">
+      <?php echo "<span>Bienvenido " . $this->session->userdata['logged_in']['realname'] . "</span>"; ?> </a>
       <div id="logout">
         <?php echo form_open('auth/logout');?>
         <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>

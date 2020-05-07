@@ -233,6 +233,30 @@ a, img {
 	text-shadow: 1px 1px 0px #666;
 }
 
+#user_box2 {
+	position: relative;
+	width: auto;
+	height: 200px;
+	margin: auto;
+	color: #AAA;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background: #253341;
+}
+
+#user_box2 span {
+	float: right;
+	clear: both;
+	position: absolute;
+	top: 22px;
+	right: 75px;
+	color: #FFF;
+	text-shadow: 1px 1px 0px #666;
+}
+
 #photo_profile {
 	float: left;
 	clear: both;
