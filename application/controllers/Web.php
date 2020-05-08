@@ -20,6 +20,7 @@ class Web extends CI_Controller
         $data['servicios'] = $this->Web_model->get_All_Services();
         $data['images'] = $this->Web_model->get_All_Images();
         $data['quienesSomos'] = $this->Web_model->get_QuienesSomos();
+        $data['inicio'] = $this->Web_model->get_Inicio();
         if ($this->correo) {
             $data['message_display'] = 'Correo electrónico enviado exitosamente';
         }

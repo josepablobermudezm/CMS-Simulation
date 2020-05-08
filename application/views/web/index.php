@@ -19,8 +19,8 @@
     <br>
     <div id="divGrande">
       <?php foreach ($sections as $s) { ?>
-        <?php if ($s['titulo'] != 'Servicios' && $s['titulo'] != 'Galería' && $s['titulo'] != 'Contacto' && $s['titulo'] != 'Quienes Somos') { ?>
-          <div id="div_<?php echo $s['id_secciones']; ?>" class="main_panel1">
+        <?php if ($s['titulo'] != 'Servicios' && $s['titulo'] != 'Galería' && $s['titulo'] != 'Contacto' && $s['titulo'] != 'Quienes Somos' && $s['titulo'] != 'Inicio' ) { ?>
+          <div id="div_<?php echo $s['id_secciones']; ?>" class="main_panel2">
             <label id="label"><?php echo $s['titulo']; ?></label>
             <p id="parrafo"><?php echo $s['detalle']; ?></p>
           </div>
@@ -43,6 +43,10 @@
             </div>
           <?php } ?>
         </div>
+      </div>
+      <div id="div_1" class="main_panel1">
+        <label id="label">Inicio</label>
+        <p id="parrafo"><?php echo $inicio[0]['detalle']; ?></p>
       </div>
       <div id="div_2" class="main_panel2">
         <label id="label">Quienes Somos</label>

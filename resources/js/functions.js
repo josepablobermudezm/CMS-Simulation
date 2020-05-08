@@ -74,13 +74,13 @@ function ChangeDiv(id, src) {
 function next() {
 	var ArrayImg = document.getElementsByClassName("Imágenes");
 
-	for(var i = 0; i < ArrayImg.length; i++){
-		if(ArrayImg[i].src == document.getElementById("expandedImg").src){
-			if(i+1 < ArrayImg.length){
-				document.getElementById("expandedImg").src = ArrayImg[i+1].src;
+	for (var i = 0; i < ArrayImg.length; i++) {
+		if (ArrayImg[i].src == document.getElementById("expandedImg").src) {
+			if (i + 1 < ArrayImg.length) {
+				document.getElementById("expandedImg").src = ArrayImg[i + 1].src;
 				break;
 			}
-			if(i == 9){
+			if (i == 9) {
 				document.getElementById("expandedImg").src = ArrayImg[0].src;
 				break;
 			}
@@ -91,13 +91,13 @@ function next() {
 function before() {
 	var ArrayImg = document.getElementsByClassName("Imágenes");
 
-	for(var i = 0; i < ArrayImg.length; i++){
-		if(ArrayImg[i].src == document.getElementById("expandedImg").src){
-			if(i-1 >= 0){
-				document.getElementById("expandedImg").src = ArrayImg[i-1].src;
+	for (var i = 0; i < ArrayImg.length; i++) {
+		if (ArrayImg[i].src == document.getElementById("expandedImg").src) {
+			if (i - 1 >= 0) {
+				document.getElementById("expandedImg").src = ArrayImg[i - 1].src;
 				break;
 			}
-			if(i == 0){
+			if (i == 0) {
 				document.getElementById("expandedImg").src = ArrayImg[9].src;
 				break;
 			}
@@ -111,4 +111,17 @@ function enlargeImg(imgs) {
 	var imgText = document.getElementById("imgDescription");
 	enlarge.src = imgs.src;
 	imgText.innerHTML = imgs.alt;
+}
+
+function BlockInput() {
+
+	if (document.getElementById("secciones").value == "1" || document.getElementById("secciones").value == "2" ||
+		document.getElementById("secciones").value == "4" || document.getElementById("secciones").value == "5" ||
+		document.getElementById("secciones").value == "6") {
+		document.getElementById("titulo").disabled = true;
+	} else {
+		document.getElementById("titulo").disabled = false;
+	}
+
+
 }

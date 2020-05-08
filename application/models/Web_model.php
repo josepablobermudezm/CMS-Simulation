@@ -32,6 +32,12 @@ class Web_model extends CI_Model
                                 WHERE secciones.titulo = 'Quienes Somos'")->result_array();
     }
 
+    public function get_Inicio(){
+        return $this->db->query("SELECT secciones.detalle
+                                FROM secciones
+                                WHERE secciones.titulo = 'Inicio'")->result_array();
+    }
+
     public function add_email($params)
     {
         $this->db->insert('correo',$params);

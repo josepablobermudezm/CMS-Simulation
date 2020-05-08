@@ -21,7 +21,7 @@
       <div id="div_6" class="main_panel1">
         <?php echo form_open_multipart('admin/editarGuardar/'); ?>
         <div class="row">
-          <select name="secciones">
+          <select id="secciones" name="secciones" onclick="BlockInput()">
             <option value="0" selected>Elegir Sección</option>
             <?php foreach ($sections as $s) { ?>
               <option value="<?php echo $s['id_secciones']; ?>"><?php echo $s['titulo']; ?></option>
