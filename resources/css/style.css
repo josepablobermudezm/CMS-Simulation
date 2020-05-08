@@ -585,6 +585,37 @@ input[type=text], select, textarea {
 	background-color: #253341;
 }
 
+#row2 {
+	display: none;
+	overflow-y: hidden;
+	overflow-x: auto;
+	width: auto;
+	height: 50%;
+	padding: 10px;
+	white-space: nowrap;
+	background-color: #253341;
+}
+
+#row2>div {
+	display: inline-block;
+	height: 50%;
+	width: 10%;
+	margin: 0 10px 0 0;
+}
+
+.column2 {
+	width: 50%;
+}
+
+.column2 img {
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.column2 img:hover {
+	opacity: 1;
+}
+
 .row>div {
 	display: inline-block;
 	height: 50%;
@@ -593,6 +624,12 @@ input[type=text], select, textarea {
 }
 
 .Imágenes {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.Imágenes2 {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -616,6 +653,15 @@ input[type=text], select, textarea {
 	content: "";
 	clear: both;
 }
+
+#container2 {
+	position: relative;
+	display: none;
+	width:100%;
+	height:100%;
+	z-index: 0;
+}
+
 
 .container {
 	position: relative;
@@ -658,3 +704,12 @@ input[type=text], select, textarea {
 	font-size: 35px;
 	cursor: pointer;
 }
+
+.closebtn {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	color: white;
+	font-size: 35px;
+	cursor: pointer;
+  }

@@ -25,6 +25,7 @@ class Admin extends CI_Controller
 		$this->load->model('Web_model');
 		$data['sections'] = $this->Web_model->get_All_Sections();
 		$data['_view'] = $view;
+		$data['images'] = $this->Web_model->get_All_Images();
 		$this->load->view('layouts/main', $data);
 	}
 
@@ -52,25 +53,23 @@ class Admin extends CI_Controller
 
 			$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
 
-			if ($this->form_validation->run() && $_POST['titulo'] != "" && $_POST['descripcion'] != "") {
-				if ($_POST['secciones'] == "0") {
-					$params = array(
-						'imagen' => $this->upload->data('file_name'),
-						'titulo' => $this->input->post('titulo'),
-						'detalle' => $this->input->post('descripcion')
-					);
-					$this->Admin_model->add_Seccion($params);
-				}else{
-					echo $_POST['secciones'];
-					$params = array(
-						'id_secciones' => $this->input->post('secciones'),
-						'imagen' => $this->upload->data('file_name'),
-						'titulo' => $this->input->post('titulo'),
-						'detalle' => $this->input->post('descripcion')
-					);
-					$this->Admin_model->edit_Section($params);
-				}
+			if ($_POST['secciones'] == "0") {
+				$params = array(
+					'imagen' => $this->upload->data('file_name'),
+					'titulo' => $this->input->post('titulo'),
+					'detalle' => $this->input->post('descripcion')
+				);
+				$this->Admin_model->add_Seccion($params);
+			} else {
+				$params = array(
+					'id_secciones' => $this->input->post('secciones'),
+					'imagen' => $this->upload->data('file_name'),
+					'titulo' => $this->input->post('titulo'),
+					'detalle' => $this->input->post('descripcion')
+				);
+				$this->Admin_model->edit_Section($params);
 			}
+			redirect('/admin/login', 'refresh');
 		}
 	}
 
@@ -136,8 +135,6 @@ class Admin extends CI_Controller
 	//Proceso de Logout 
 	public function logout()
 	{
-
-		// Removemos los datos de la sesion
 		$sess_array = array(
 			'logged_in' => FALSE,
 			'username' => '',
@@ -146,5 +143,31 @@ class Admin extends CI_Controller
 		$this->session->sess_destroy();
 		$data['message_display'] = 'Has cerrado tu sesión de forma exitosa.';
 		$this->load->view('admin/login', $data);
+	}
+
+	public function obtenerImagen($id)
+	{
+		$data['sections'] = $this->Admin_model->get_Section($id);
+		$array = json_decode(json_encode($data['sections'][0]), true);
+		print_r($array['imagen']);
+	}
+
+	public function obtenerDetalle($id)
+	{
+		$data['sections'] = $this->Admin_model->get_Section($id);
+		$array = json_decode(json_encode($data['sections'][0]), true);
+		print_r($array['detalle']);
+	}
+
+	public function obtenerTitulo($id)
+	{
+		$data['sections'] = $this->Admin_model->get_Section($id);
+		$array = json_decode(json_encode($data['sections'][0]), true);
+		print_r($array['titulo']);
+	}
+
+	public function EliminarImagen($id)
+	{
+		$this->Admin_model->delete_Image($id);
 	}
 }

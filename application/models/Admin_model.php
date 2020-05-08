@@ -30,6 +30,23 @@ class Admin_model extends CI_Model
 		}
 	}
 
+	public function delete_Image($id)
+    {
+        $this->db->delete('imagenes', array('id_imagen' => $id));
+    }
+
+	public function get_Section($id)
+	{
+
+		$query = $this->db->query("SELECT secciones.* from secciones WHERE secciones.id_secciones = '$id'");
+
+		if ($query->num_rows() == 1) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
 	public function add_Seccion($params)
 	{
 		$this->db->insert('secciones', $params);

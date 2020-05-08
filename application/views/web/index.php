@@ -7,7 +7,7 @@
   <?php echo ($message != "") ? "<script> alertify.set('notifier', 'position', 'top-right'); alertify.success('$message');</script>" : ""; ?>
   <div id="panel_app">
     <div id="user_box">
-      <img id="img" src="<?php echo site_url('/resources/photos/img1.jpg'); ?>" style="position: relative;  width:100%; height:100%; ">
+      <img id="img" src="<?php echo site_url('/resources/photos/' . $sections[0]['imagen']); ?>" style="position: relative;  width:100%; height:100%; ">
     </div>
     <div id="divBoton">
       <ul id="button">
