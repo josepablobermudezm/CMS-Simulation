@@ -9,7 +9,7 @@ class Web_model extends CI_Model
 
 
     public function get_All_Sections(){
-        return $this->db->query("SELECT secciones.id_secciones, secciones.imagen, secciones.titulo, secciones.detalle, secciones.nombre
+        return $this->db->query("SELECT secciones.id_secciones, secciones.imagen, secciones.titulo, secciones.detalle
                                 FROM secciones
                                 ORDER BY secciones.id_secciones ASC")->result_array();
     }
@@ -37,6 +37,7 @@ class Web_model extends CI_Model
         $this->db->insert('correo',$params);
         return $this->db->insert_id();
     }
+
         
     /*public function add_tweet($params)
     {

@@ -12,14 +12,14 @@
     <div id="divBoton">
       <ul id="button">
         <?php foreach ($sections as $s) { ?>
-          <li id="<?php echo $s['id_secciones']; ?>" onclick="ChangeDiv(<?php echo $s['id_secciones']; ?>,'<?php echo site_url('/resources/photos/'); ?>'+'<?php echo $s['imagen']; ?>')"><a><?php echo $s['nombre']; ?></a></li>
+          <li id="<?php echo $s['id_secciones']; ?>" onclick="ChangeDiv(<?php echo $s['id_secciones']; ?>,'<?php echo site_url('/resources/photos/'); ?>'+'<?php echo $s['imagen']; ?>')"><a><?php echo $s['titulo']; ?></a></li>
         <?php } ?>
       </ul>
     </div>
     <br>
     <div id="divGrande">
       <?php foreach ($sections as $s) { ?>
-        <?php if ($s['nombre'] != 'Servicios' && $s['nombre'] != 'Galería' && $s['nombre'] != 'Contacto' && $s['nombre'] != 'Quienes Somos') { ?>
+        <?php if ($s['titulo'] != 'Servicios' && $s['titulo'] != 'Galería' && $s['titulo'] != 'Contacto' && $s['titulo'] != 'Quienes Somos') { ?>
           <div id="div_<?php echo $s['id_secciones']; ?>" class="main_panel1">
             <label id="label"><?php echo $s['titulo']; ?></label>
             <p id="parrafo"><?php echo $s['detalle']; ?></p>

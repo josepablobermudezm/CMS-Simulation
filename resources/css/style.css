@@ -250,7 +250,7 @@ a, img {
 	background: #253341;
 }
 
-#user_box2 span {
+#user_box2 label {
 	float: right;
 	clear: both;
 	position: absolute;
@@ -561,7 +561,7 @@ input[type=text], select, textarea {
 	resize: vertical;
 }
 
-input[type=submit] {
+#submit_button {
 	background-color: #4CAF50;
 	color: white;
 	padding: 12px 20px;
@@ -571,7 +571,7 @@ input[type=submit] {
 	width: 100%;
 }
 
-input[type=submit]:hover {
+#submit_button:hover {
 	background-color: #45a049;
 }
 

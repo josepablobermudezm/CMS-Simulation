@@ -1,10 +1,12 @@
 <?php
 
-Class Admin_model extends CI_Model {
+class Admin_model extends CI_Model
+{
 
 	//Se utiliza el algoritmo de encriptación nativo de PHP password_hash('contraseña', PASSWORD_BCRYPT) para encriptar.
 	//Para verificar la contraseña se utiliza password_verify('contraseña','passw de la BD')
-	public function login($data) {
+	public function login($data)
+	{
 		$userExists = $this->get_user_information($data['username']);
 
 		//Se compara el password que viene por POST con el encriptado de la BD por medio de password_verify()
@@ -16,7 +18,8 @@ Class Admin_model extends CI_Model {
 	}
 
 	//Retorna los datos del usuario indicado por parámetro
-	public function get_user_information($username) {
+	public function get_user_information($username)
+	{
 
 		$query = $this->db->query("SELECT users.* from users WHERE users.username = '$username'");
 
@@ -27,4 +30,14 @@ Class Admin_model extends CI_Model {
 		}
 	}
 
+	public function add_Seccion($params)
+	{
+		$this->db->insert('secciones', $params);
+		return $this->db->insert_id();
+	}
+
+	public function edit_Section($params)
+	{
+		return $this->db->query("UPDATE secciones SET secciones.imagen = '" . $params['imagen'] . "', secciones.detalle = '" . $params['detalle'] . "', secciones.titulo = '" . $params['titulo'] . "' WHERE secciones.id_secciones = " . $params['id_secciones']);
+	}
 }

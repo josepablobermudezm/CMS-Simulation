@@ -1,8 +1,10 @@
 <?php
 
-Class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -11,22 +13,70 @@ Class Admin extends CI_Controller {
 	}
 
 	//Muestra la vista del Login
-	public function index() {
+	public function index()
+	{
 		$this->load->view('admin/login');
 	}
 
 
 	function load_data_view($view)
-    {
-    	//precarga todos los datos con los que la vista debe iniciar
-    	$this->load->model('Web_model');
-        $data['sections'] = $this->Web_model->get_All_Sections();
-        $data['_view'] = $view;
-		$this->load->view('layouts/main',$data);
-    }
+	{
+		//precarga todos los datos con los que la vista debe iniciar
+		$this->load->model('Web_model');
+		$data['sections'] = $this->Web_model->get_All_Sections();
+		$data['_view'] = $view;
+		$this->load->view('layouts/main', $data);
+	}
+
+	function editarGuardar()
+	{
+
+		$config['upload_path']          = './resources/photos/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 2000; //2MB
+		$config['overwrite']            = true;
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('titulo', 'Post/name', 'required|max_length[50]');
+		$this->form_validation->set_rules('descripcion', 'Post/message', 'required|max_length[10000]');
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('txt_file')) {
+			$error = array('error' => $this->upload->display_errors());
+			$this->session->set_flashdata('error', $error['error']);
+		} else {
+			$data = array('upload_data' => $this->upload->data());
+			$params = array(
+				'photo' => $this->upload->data('file_name')
+			);
+
+			$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
+
+			if ($this->form_validation->run() && $_POST['titulo'] != "" && $_POST['descripcion'] != "") {
+				if ($_POST['secciones'] == "0") {
+					$params = array(
+						'imagen' => $this->upload->data('file_name'),
+						'titulo' => $this->input->post('titulo'),
+						'detalle' => $this->input->post('descripcion')
+					);
+					$this->Admin_model->add_Seccion($params);
+				}else{
+					echo $_POST['secciones'];
+					$params = array(
+						'id_secciones' => $this->input->post('secciones'),
+						'imagen' => $this->upload->data('file_name'),
+						'titulo' => $this->input->post('titulo'),
+						'detalle' => $this->input->post('descripcion')
+					);
+					$this->Admin_model->edit_Section($params);
+				}
+			}
+		}
+	}
 
 	//Proceso de autenticación Login
-	public function login() {
+	public function login()
+	{
 
 		$this->form_validation->set_rules('txt_username', 'Username', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('txt_password', 'Password', 'trim|required|xss_clean');
@@ -36,14 +86,12 @@ Class Admin extends CI_Controller {
 			//Si autenticamos vamos a la vista principal
 			//Sino nos devielve al login
 			//Esto es para el caso de si la sesión aún está activa
-			if(isset($this->session->userdata['logged_in'])){
-				 //Función propia para cargar la vista indicada con datos precargados
+			if (isset($this->session->userdata['logged_in'])) {
+				//Función propia para cargar la vista indicada con datos precargados
 				$this->load_data_view('admin/administrador');
-			}else{
+			} else {
 				$this->load->view('admin/login');
-
 			}
-
 		} else {
 
 			//Si se cumple la validación procedemos a comprobar la autenticación
@@ -86,7 +134,8 @@ Class Admin extends CI_Controller {
 	}
 
 	//Proceso de Logout 
-	public function logout() {
+	public function logout()
+	{
 
 		// Removemos los datos de la sesion
 		$sess_array = array(
@@ -98,7 +147,4 @@ Class Admin extends CI_Controller {
 		$data['message_display'] = 'Has cerrado tu sesión de forma exitosa.';
 		$this->load->view('admin/login', $data);
 	}
-
 }
-
-?>
