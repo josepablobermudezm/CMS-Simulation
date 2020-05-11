@@ -251,6 +251,39 @@ function BlockInput(id) {
 	}
 }
 
+function EnviarCorreo(){
+	var name = document.getElementById('name').value;
+	var email = document.getElementById('email').value
+	var message = document.getElementById('message').value
+	if(name != "" && email != "" && message != ""){
+		var formdata = new FormData();
+		formdata.append('name', document.getElementById('name').value);
+		formdata.append('email', document.getElementById('email').value);
+		formdata.append('message', document.getElementById('message').value);
+		axios.post('web/correo', formdata).then(function (response) { //En caso de carga exitosa del recurso
+			recargarElemento4("http://localhost/Proyecto/web/index", "div_6");
+		}).catch(function (error) { });
+	}
+	else{
+		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.error('Digita tus datos');
+	}
+	
+}
+
+function recargarElemento4(page, element){
+	axios.post(page).then(function (response) {
+		//En caso de carga exitosa del recurso
+		var temphtml = document.createElement('div'); temphtml.innerHTML = response.data;
+		document.getElementById(element).innerHTML = temphtml.querySelector("#" + element).innerHTML;
+		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.success('Correo enviado y guardado Correctamente');
+	})
+		.catch(function (error) {
+			//En caso de carga fallida del recurso 
+		});
+}
+
 function ChangeImage() {
 	var file = document.getElementById("txt_file").files[0].name;
 	document.getElementById("imagenS").src = '../resources/photos/' + file;

@@ -48,7 +48,7 @@
       </div>
       <div id="after_submit"></div>
       <div id="div_6" class="main_panel2">
-        <?php echo form_open_multipart('web/correo/'); ?>
+        <?php// echo form_open_multipart('web/correo/'); ?>
         <div class="row">
           <input id="name" class="input" name="name" type="text" value="" placeholder="Nombre" size="30" /><br />
           <span id="name_validation" class="error_message"></span>
@@ -62,9 +62,9 @@
           <span id="message_validation" class="error_message"></span>
         </div>
         <div class="row">
-          <input id="submit_button" type="submit" value="Enviar" />
+          <input id="submit_button" type="button" value="Enviar" onclick="EnviarCorreo()" />
         </div>
-        <?php echo form_close(); ?>
+        <?php //echo form_close(); ?>
       </div>
 
       <div id="div_4" class="main_panel2">

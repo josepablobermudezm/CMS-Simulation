@@ -36,7 +36,7 @@ class Web extends CI_Controller
         $this->form_validation->set_rules('name', 'Post/name', 'required|max_length[50]');
         $this->form_validation->set_rules('message', 'Post/message', 'required|max_length[2000]');
 
-        if ($this->form_validation->run() && $_POST['email'] != "" && $_POST['name'] != "" && $_POST['message'] != "") {
+        if ($this->form_validation->run()) {
             $params = array(
                 'nombre' => $this->input->post('name'),
                 'correo' => $this->input->post('email'),
