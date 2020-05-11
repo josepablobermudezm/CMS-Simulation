@@ -86,6 +86,9 @@
         <div class="row">
           <input id="submit_button" type="submit" value="Guardar" />
         </div>
+        <div id="caja_delete_serv">
+          <input id="btn_eliminarServ" type="button" value="Eliminar Servicio" onclick="EliminarServicio()" />
+        </div>
         <?php echo form_close(); ?>
       </div>
     </div>

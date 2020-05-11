@@ -131,32 +131,52 @@ function enlargeImg(imgs) {
 
 function ServiceInput(id) {
 
-
 	if (id.value != '0') {
 		axios.get('obtenerTituloServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
 			document.getElementById("tituloS").value = response.data;
-			console.log(response.data);
 		})
 
 		axios.get('obtenerDetalleServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
 			document.getElementById("detalleS").value = response.data;
-			console.log(response.data);
 		})
 
 		axios.get('obtenerDescripcionServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
 			document.getElementById("descripcionS").value = response.data;
-			console.log(response.data);
 		})
 	}
 }
 
+function EliminarServicio(){
+	console.log(document.getElementById("serviciosSELECT").value);
+	axios.get('EliminarServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
+		recargarElemento3("http://localhost/Proyecto/admin/login", "divGrande");
+	})
+}
+
+function recargarElemento3(page, element){
+	axios.post(page).then(function (response) {
+		//En caso de carga exitosa del recurso
+		var temphtml = document.createElement('div'); temphtml.innerHTML = response.data;
+		document.getElementById(element).innerHTML = temphtml.querySelector("#" + element).innerHTML;
+		document.getElementById("titulo").style.display = 'none';
+		document.getElementById("descripcion").style.display = 'none';
+		//document.getElementById("titulo").placeholder = "Titulo de servicio"
+		document.getElementById("TituloServicio").style.display = "block";
+		document.getElementById("DetalleServicio").style.display = "block";
+		document.getElementById("Descripcionservicio").style.display = "block";
+		document.getElementById("btn_eliminarServ").style.display = 'block';
+	})
+		.catch(function (error) {
+			//En caso de carga fallida del recurso 
+		});
+}
 
 function BlockInput(id) {
 
 	if (id.value != '0') {
 
 		if (document.getElementById("secciones").value == "1" || document.getElementById("secciones").value == "2" ||
-			document.getElementById("secciones").value == "6") {
+			document.getElementById("secciones").value == "6" || document.getElementById("secciones").value == "4") {
 			document.getElementById("titulo").readOnly = true;
 		} else {
 			document.getElementById("titulo").readOnly = false;
@@ -184,16 +204,19 @@ function BlockInput(id) {
 			document.getElementById("TituloServicio").style.display = "block";
 			document.getElementById("DetalleServicio").style.display = "block";
 			document.getElementById("Descripcionservicio").style.display = "block";
+			document.getElementById("btn_eliminarServ").style.display = 'block';
 			//document.getElementById("descripcion").placeholder = "Descripción"
 		}
 		else {
 			//servicios
 			document.getElementById("titulo").style.display = 'block';
 			document.getElementById("descripcion").style.display = 'block';
+			
 
 			document.getElementById("TituloServicio").style.display = "none";
 			document.getElementById("DetalleServicio").style.display = "none";
 			document.getElementById("Descripcionservicio").style.display = "none";
+			document.getElementById("btn_eliminarServ").style.display = 'none';
 		}
 
 		axios.get('obtenerImagen/' + document.getElementById("secciones").value).then(function (response) { //En caso de carga exitosa del recurso

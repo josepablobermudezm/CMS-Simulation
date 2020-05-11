@@ -236,6 +236,10 @@ class Admin extends CI_Controller
 		$this->Admin_model->delete_Image($id);
 	}
 
+	public function EliminarServicio($id){
+		$this->Admin_model->delete_service($id);
+	}
+
 	function upload_photo()
 	{
 		$config['upload_path']          = './resources/photos/';

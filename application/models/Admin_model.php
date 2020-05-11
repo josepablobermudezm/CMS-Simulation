@@ -35,6 +35,10 @@ class Admin_model extends CI_Model
         $this->db->delete('imagenes', array('id_imagen' => $id));
     }
 
+	public function delete_service($id){
+		$this->db->delete('servicio', array('id_servicio' => $id));
+	}
+
 	public function get_Section($id)
 	{
 
