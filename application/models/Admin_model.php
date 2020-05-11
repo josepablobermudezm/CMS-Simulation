@@ -59,6 +59,12 @@ class Admin_model extends CI_Model
 		return $this->db->insert_id();
 	}
 
+	public function add_Service($params)
+	{
+		$this->db->insert('servicio', $params);
+		return $this->db->insert_id();
+	}
+
 	public function edit_Section($params)
 	{
 		return $this->db->query("UPDATE secciones SET secciones.imagen = '" . $params['imagen'] . "', secciones.detalle = '" . $params['detalle'] . "', secciones.titulo = '" . $params['titulo'] . "' WHERE secciones.id_secciones = " . $params['id_secciones']);

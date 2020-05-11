@@ -585,6 +585,17 @@ input[type=text], select, textarea {
 	background-color: #253341;
 }
 
+.row2 {
+	display: none;
+	overflow-y: hidden;
+	overflow-x: auto;
+	width: auto;
+	height: 50%;
+	padding: 10px;
+	white-space: nowrap;
+	background-color: #253341;
+}
+
 #row2 {
 	display: none;
 	overflow-y: hidden;

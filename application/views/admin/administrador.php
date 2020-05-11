@@ -40,6 +40,24 @@
           <textarea id="descripcion" class="input" name="descripcion" placeholder="Descripción" rows="7" cols="30"></textarea><br />
           <span id="message_validation" class="error_message"></span>
         </div>
+
+        <!-- Servicios -->
+
+        <div id="TituloServicio" class="row2">
+          <?php echo "<label>Deseas agregar otro servicio?</label>"; ?> </a>
+          <br>
+          <input id="tituloS" class="input" name="tituloS" type="text" value="" placeholder="Titulo Servicio" size="30" /><br />
+          <span id="email_validation" class="error_message"></span>
+        </div>
+        <div id="DetalleServicio" class="row2">
+          <input id="detalleS" class="input" name="detalleS" type="text" value="" placeholder="Detalle" size="30" /><br />
+          <span id="email_validation" class="error_message"></span>
+        </div>
+        <div id="Descripcionservicio" class="row2">
+        <textarea id="descripcionS" class="input" name="descripcionS" placeholder="Descripción" rows="7" cols="30"></textarea><br />
+          <span id="email_validation" class="error_message"></span>
+        </div>
+
         <div id="ImagesBox">
           <div id="container2">
             <?php if (sizeof($images) > 0) { ?>

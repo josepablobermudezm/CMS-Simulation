@@ -134,13 +134,13 @@ function BlockInput(id) {
 	if (id.value != '0') {
 
 		if (document.getElementById("secciones").value == "1" || document.getElementById("secciones").value == "2" ||
-			document.getElementById("secciones").value == "5" || document.getElementById("secciones").value == "6") {
+			document.getElementById("secciones").value == "6") {
 			document.getElementById("titulo").readOnly = true;
 		} else {
 			document.getElementById("titulo").readOnly = false;
 		}
 
-		if (document.getElementById("secciones").value == "4") {
+		if (document.getElementById("secciones").value == "4") {//galería
 
 			document.getElementById("titulo").style.display = 'none';
 			document.getElementById("imagenS").style.display = 'none';
@@ -149,11 +149,29 @@ function BlockInput(id) {
 			document.getElementById("container2").style.display = 'block';
 
 		} else {
+			//galería
 			document.getElementById("titulo").style.display = 'block';
 			document.getElementById("imagenS").style.display = 'block';
 			document.getElementById("container2").style.display = 'none';
-
 			document.getElementById("row2").style.display = 'none';
+		}
+		if (document.getElementById("secciones").value == "5") {//servicios
+			document.getElementById("titulo").style.display = 'none';
+			document.getElementById("descripcion").style.display = 'none';
+			//document.getElementById("titulo").placeholder = "Titulo de servicio"
+			document.getElementById("TituloServicio").style.display = "block";
+			document.getElementById("DetalleServicio").style.display = "block";
+			document.getElementById("Descripcionservicio").style.display = "block";
+			//document.getElementById("descripcion").placeholder = "Descripción"
+		}
+		else {
+			//servicios
+			document.getElementById("titulo").style.display = 'block';
+			document.getElementById("descripcion").style.display = 'block';
+
+			document.getElementById("TituloServicio").style.display = "none";
+			document.getElementById("DetalleServicio").style.display = "none";
+			document.getElementById("Descripcionservicio").style.display = "none";
 		}
 
 		axios.get('obtenerImagen/' + document.getElementById("secciones").value).then(function (response) { //En caso de carga exitosa del recurso

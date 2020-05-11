@@ -69,7 +69,15 @@ class Admin extends CI_Controller
 				if ($this->Admin_model->count_images()) {
 					$this->Admin_model->add_Image($params);
 				}
-			} else {
+			} else if($_POST['secciones'] == "5"){
+				$params = array(
+					'descripcion' => $this->input->post('detalleS'),
+					'detalle' => $this->input->post('descripcionS'),
+					'titulo' => $this->input->post('tituloS')
+				);
+				$this->Admin_model->add_Service($params);
+			}
+			else{
 				$params = array(
 					'id_secciones' => $this->input->post('secciones'),
 					'imagen' => $this->upload->data('file_name'),
