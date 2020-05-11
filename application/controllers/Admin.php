@@ -60,6 +60,15 @@ class Admin extends CI_Controller
 					'detalle' => $this->input->post('descripcion')
 				);
 				$this->Admin_model->add_Seccion($params);
+			} else if ($_POST['secciones'] == "4") {
+
+				$params = array(
+					'imagen' => $this->upload->data('file_name'),
+					'descripcion' => $this->input->post('descripcion')
+				);
+				if ($this->Admin_model->count_images()) {
+					$this->Admin_model->add_Image($params);
+				}
 			} else {
 				$params = array(
 					'id_secciones' => $this->input->post('secciones'),
@@ -169,5 +178,32 @@ class Admin extends CI_Controller
 	public function EliminarImagen($id)
 	{
 		$this->Admin_model->delete_Image($id);
+	}
+
+	function upload_photo()
+	{
+		$config['upload_path']          = './resources/photos/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 10000; //10MB
+		$config['overwrite']            = true;
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('txt_file1')) {
+			$error = array('error' => $this->upload->display_errors());
+			$this->session->set_flashdata('error', $error['error']);
+		} else {
+			$data = array('upload_data' => $this->upload->data());
+
+			$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
+
+			$params = array(
+				'post' => $this->upload->data('file_name'),
+				'date' => date('Y-m-d H:i:s'),
+				'users_id' => $this->session->userdata['logged_in']['users_id'],
+			);
+			$this->Twitter_model->add_tweet($params);
+		}
+		$this->index();
 	}
 }

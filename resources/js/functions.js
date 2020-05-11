@@ -143,7 +143,6 @@ function BlockInput(id) {
 		if (document.getElementById("secciones").value == "4") {
 
 			document.getElementById("titulo").style.display = 'none';
-			document.getElementById("descripcion").style.display = 'none';
 			document.getElementById("imagenS").style.display = 'none';
 
 			document.getElementById("row2").style.display = 'block';
@@ -151,7 +150,6 @@ function BlockInput(id) {
 
 		} else {
 			document.getElementById("titulo").style.display = 'block';
-			document.getElementById("descripcion").style.display = 'block';
 			document.getElementById("imagenS").style.display = 'block';
 			document.getElementById("container2").style.display = 'none';
 
@@ -182,7 +180,6 @@ function BlockInput(id) {
 function ChangeImage() {
 	var file = document.getElementById("txt_file").files[0].name;
 	document.getElementById("imagenS").src = '../resources/photos/' + file;
-
 }
 
 function deleteImg() {
@@ -192,32 +189,6 @@ function deleteImg() {
 	axios.get('EliminarImagen/' + document.getElementById("expandedImg").name).then(function (response) { //En caso de carga exitosa del recurso
 		recargarElemento2("http://localhost/Proyecto/admin/login", "ImagesBox");
 	}).catch(function (error) { });
-
-
-	/*var imagenes = document.getElementsByClassName("Imágenes2");
-
-	console.log(document.getElementById("expandedImg").src);
-	for (var i = 0; i < imagenes.length; i++) {
-		console.log(imagenes[i].src + " == " + document.getElementById("expandedImg").src);
-		if (imagenes[i].src == document.getElementById("expandedImg").src) {
-			imagenes[i].style.display = 'none';
-			if (i + 1 < imagenes.length) {
-				document.getElementById("expandedImg").src = imagenes[i + 1].src;
-			} else if (i - 1 >= 0) {
-				if (imagenes[i - 1].style.display != 'none') {
-					document.getElementById("expandedImg").src = imagenes[i - 1].src;
-				}
-			}
-			if (i + 1 == imagenes.length && imagenes[0].style.display == 'none') {
-				document.getElementById("expandedImg").style.display = 'none';
-				document.getElementById("close").style.display = 'none';
-			}else if(i + 1 == imagenes.length && imagenes[0].style.display != 'none'){
-				document.getElementById("expandedImg").src = imagenes[0].src;
-			}
-			break;
-		}
-
-	}*/
 }
 
 
