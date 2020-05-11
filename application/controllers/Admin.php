@@ -77,7 +77,6 @@ class Admin extends CI_Controller
 					'titulo' => $this->input->post('tituloS'),
 				);
 				$this->Admin_model->add_Service($params);
-
 				$params = array(//se edita la imagen 
 					'id_secciones' => $this->input->post('secciones'),
 					'titulo' => "Servicios",
