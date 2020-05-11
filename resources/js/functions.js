@@ -42,6 +42,8 @@ function recargarElemento2(page, element) {
 		document.getElementById(element).innerHTML = temphtml.querySelector("#" + element).innerHTML;
 		document.getElementById("row2").style.display = 'block';
 		document.getElementById("container2").style.display = 'block';
+		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.success('Imágen eliminada exitosamente');
 	})
 		.catch(function (error) {
 			//En caso de carga fallida del recurso 
@@ -147,10 +149,16 @@ function ServiceInput(id) {
 }
 
 function EliminarServicio(){
-	console.log(document.getElementById("serviciosSELECT").value);
-	axios.get('EliminarServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
-		recargarElemento3("http://localhost/Proyecto/admin/login", "divGrande");
-	})
+	if(document.getElementById("serviciosSELECT").value != "0"){
+		console.log(document.getElementById("serviciosSELECT").value);
+		axios.get('EliminarServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
+			recargarElemento3("http://localhost/Proyecto/admin/login", "divGrande");
+		})
+	}
+	else{
+		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.error('Debes Seleccionar el Servicio');
+	}
 }
 
 function recargarElemento3(page, element){
@@ -165,6 +173,9 @@ function recargarElemento3(page, element){
 		document.getElementById("DetalleServicio").style.display = "block";
 		document.getElementById("Descripcionservicio").style.display = "block";
 		document.getElementById("btn_eliminarServ").style.display = 'block';
+
+		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.success('Servicio Eliminado Correctamente');
 	})
 		.catch(function (error) {
 			//En caso de carga fallida del recurso 
@@ -246,8 +257,6 @@ function ChangeImage() {
 }
 
 function deleteImg() {
-
-	console.log(document.getElementById("expandedImg").name);
 
 	axios.get('EliminarImagen/' + document.getElementById("expandedImg").name).then(function (response) { //En caso de carga exitosa del recurso
 		recargarElemento2("http://localhost/Proyecto/admin/login", "ImagesBox");
