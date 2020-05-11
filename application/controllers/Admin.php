@@ -24,6 +24,7 @@ class Admin extends CI_Controller
 		//precarga todos los datos con los que la vista debe iniciar
 		$this->load->model('Web_model');
 		$data['sections'] = $this->Web_model->get_All_Sections();
+		$data['servicios'] = $this->Web_model->get_All_Services();
 		$data['_view'] = $view;
 		$data['images'] = $this->Web_model->get_All_Images();
 		$this->load->view('layouts/main', $data);
@@ -69,23 +70,39 @@ class Admin extends CI_Controller
 				if ($this->Admin_model->count_images()) {
 					$this->Admin_model->add_Image($params);
 				}
-			} else if($_POST['secciones'] == "5"){
+			} else if ($_POST['secciones'] == "5") {
 
-				$params = array(// se agregan servicios
-					'descripcion' => $this->input->post('detalleS'),
-					'detalle' => $this->input->post('descripcionS'),
-					'titulo' => $this->input->post('tituloS'),
-				);
-				$this->Admin_model->add_Service($params);
-				$params = array(//se edita la imagen 
-					'id_secciones' => $this->input->post('secciones'),
-					'titulo' => "Servicios",
-					'detalle' => "detalle",
-					'imagen' => $this->upload->data('file_name'),
-				);
-				$this->Admin_model->edit_Section($params);
-			}
-			else{
+				if ($_POST['serviciosSELECT'] == "0") {
+					$params = array( // se agregan servicios
+						'descripcion' => $this->input->post('detalleS'),
+						'detalle' => $this->input->post('descripcionS'),
+						'titulo' => $this->input->post('tituloS'),
+					);
+					$this->Admin_model->add_Service($params);
+					$params = array( //se edita la imagen 
+						'id_secciones' => $this->input->post('secciones'),
+						'titulo' => "Servicios",
+						'detalle' => "detalle",
+						'imagen' => $this->upload->data('file_name'),
+					);
+					$this->Admin_model->edit_Section($params);
+				}else{
+					$params = array( // se agregan servicios
+						'id_servicio' => $this->input->post('serviciosSELECT'),
+						'descripcion' => $this->input->post('detalleS'),
+						'detalle' => $this->input->post('descripcionS'),
+						'titulo' => $this->input->post('tituloS'),
+					);
+					$this->Admin_model->edit_Services($params);
+					$params = array( //se edita la imagen 
+						'id_secciones' => $this->input->post('secciones'),
+						'titulo' => "Servicios",
+						'detalle' => "detalle",
+						'imagen' => $this->upload->data('file_name'),
+					);
+					$this->Admin_model->edit_Section($params);
+				}
+			} else {
 				$params = array(
 					'id_secciones' => $this->input->post('secciones'),
 					'imagen' => $this->upload->data('file_name'),
@@ -190,6 +207,29 @@ class Admin extends CI_Controller
 		$array = json_decode(json_encode($data['sections'][0]), true);
 		print_r($array['titulo']);
 	}
+
+	public function obtenerTituloServicio($id)
+	{
+		$data['services'] = $this->Admin_model->get_Service($id);
+		$array = json_decode(json_encode($data['services'][0]), true);
+		print_r($array['titulo']);
+	}
+
+	public function obtenerDetalleServicio($id)
+	{
+		$data['services'] = $this->Admin_model->get_Service($id);
+		$array = json_decode(json_encode($data['services'][0]), true);
+		print_r($array['descripcion']);
+	}
+
+
+	public function obtenerDescripcionServicio($id)
+	{
+		$data['services'] = $this->Admin_model->get_Service($id);
+		$array = json_decode(json_encode($data['services'][0]), true);
+		print_r($array['detalle']);
+	}
+
 
 	public function EliminarImagen($id)
 	{

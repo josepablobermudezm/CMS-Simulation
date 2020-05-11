@@ -47,6 +47,18 @@ class Admin_model extends CI_Model
 		}
 	}
 
+	public function get_Service($id)
+	{
+
+		$query = $this->db->query("SELECT servicio.* from servicio WHERE servicio.id_servicio = '$id'");
+
+		if ($query->num_rows() == 1) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
 	public function add_Seccion($params)
 	{
 		$this->db->insert('secciones', $params);
@@ -68,6 +80,11 @@ class Admin_model extends CI_Model
 	public function edit_Section($params)
 	{
 		return $this->db->query("UPDATE secciones SET secciones.imagen = '" . $params['imagen'] . "', secciones.detalle = '" . $params['detalle'] . "', secciones.titulo = '" . $params['titulo'] . "' WHERE secciones.id_secciones = " . $params['id_secciones']);
+	}
+
+	public function edit_Services($params)
+	{
+		return $this->db->query("UPDATE servicio SET servicio.titulo = '" . $params['titulo'] . "', servicio.detalle = '" . $params['detalle'] . "', servicio.descripcion = '" . $params['descripcion'] . "' WHERE servicio.id_servicio = " . $params['id_servicio']);
 	}
 
 	public function count_images(){

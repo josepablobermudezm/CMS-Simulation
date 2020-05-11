@@ -129,6 +129,28 @@ function enlargeImg(imgs) {
 	imgText.innerHTML = imgs.alt;
 }
 
+function ServiceInput(id) {
+
+
+	if (id.value != '0') {
+		axios.get('obtenerTituloServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
+			document.getElementById("tituloS").value = response.data;
+			console.log(response.data);
+		})
+
+		axios.get('obtenerDetalleServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
+			document.getElementById("detalleS").value = response.data;
+			console.log(response.data);
+		})
+
+		axios.get('obtenerDescripcionServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
+			document.getElementById("descripcionS").value = response.data;
+			console.log(response.data);
+		})
+	}
+}
+
+
 function BlockInput(id) {
 
 	if (id.value != '0') {

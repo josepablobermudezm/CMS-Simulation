@@ -44,7 +44,14 @@
         <!-- Servicios -->
 
         <div id="TituloServicio" class="row2">
-          <?php echo "<label>Deseas agregar otro servicio?</label>"; ?> </a>
+          <?php echo "<label>Deseas agregar o editar servicios?</label>"; ?> </a>
+          <br>
+          <select id="serviciosSELECT" name="serviciosSELECT" onclick="ServiceInput(this)">
+            <option value="0" selected>Elegir Servicio</option>
+            <?php foreach ($servicios as $s) { ?>
+              <option id="<?php echo $s['id_servicio']; ?>" value="<?php echo $s['id_servicio']; ?>"><?php echo $s['titulo']; ?></option>
+            <?php } ?>
+          </select>
           <br>
           <input id="tituloS" class="input" name="tituloS" type="text" value="" placeholder="Titulo Servicio" size="30" /><br />
           <span id="email_validation" class="error_message"></span>
@@ -54,7 +61,7 @@
           <span id="email_validation" class="error_message"></span>
         </div>
         <div id="Descripcionservicio" class="row2">
-        <textarea id="descripcionS" class="input" name="descripcionS" placeholder="Descripción" rows="7" cols="30"></textarea><br />
+          <textarea id="descripcionS" class="input" name="descripcionS" placeholder="Descripción" rows="7" cols="30"></textarea><br />
           <span id="email_validation" class="error_message"></span>
         </div>
 
