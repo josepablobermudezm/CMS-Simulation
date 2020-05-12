@@ -24,9 +24,9 @@ class Admin extends CI_Controller
 		//precarga todos los datos con los que la vista debe iniciar
 		$this->load->model('Web_model');
 		$data['sections'] = $this->Web_model->get_All_Sections();
-		$data['servicios'] = $this->Web_model->get_All_Services();
 		$data['_view'] = $view;
 		$data['images'] = $this->Web_model->get_All_Images();
+		$data['users'] = $this->Admin_model->get_all_users();
 		$this->load->view('layouts/main', $data);
 	}
 
@@ -69,38 +69,6 @@ class Admin extends CI_Controller
 				);
 				if ($this->Admin_model->count_images()) {
 					$this->Admin_model->add_Image($params);
-				}
-			} else if ($_POST['secciones'] == "5") {
-
-				if ($_POST['serviciosSELECT'] == "0") {
-					$params = array( // se agregan servicios
-						'descripcion' => $this->input->post('detalleS'),
-						'detalle' => $this->input->post('descripcionS'),
-						'titulo' => $this->input->post('tituloS'),
-					);
-					$this->Admin_model->add_Service($params);
-					$params = array( //se edita la imagen 
-						'id_secciones' => $this->input->post('secciones'),
-						'titulo' => "Servicios",
-						'detalle' => "detalle",
-						'imagen' => $this->upload->data('file_name'),
-					);
-					$this->Admin_model->edit_Section($params);
-				}else{
-					$params = array( // se agregan servicios
-						'id_servicio' => $this->input->post('serviciosSELECT'),
-						'descripcion' => $this->input->post('detalleS'),
-						'detalle' => $this->input->post('descripcionS'),
-						'titulo' => $this->input->post('tituloS'),
-					);
-					$this->Admin_model->edit_Services($params);
-					$params = array( //se edita la imagen 
-						'id_secciones' => $this->input->post('secciones'),
-						'titulo' => "Servicios",
-						'detalle' => "detalle",
-						'imagen' => $this->upload->data('file_name'),
-					);
-					$this->Admin_model->edit_Section($params);
 				}
 			} else {
 				$params = array(
@@ -155,7 +123,7 @@ class Admin extends CI_Controller
 						'users_id' => $result[0]->users_id,
 						'username' => $result[0]->username,
 						'realname' => $result[0]->realname,
-						'photo' => $result[0]->photo,
+						'correo' => $result[0]->correo,
 					);
 
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
@@ -208,36 +176,32 @@ class Admin extends CI_Controller
 		print_r($array['titulo']);
 	}
 
-	public function obtenerTituloServicio($id)
+	public function obtenerCorreo($id)
 	{
-		$data['services'] = $this->Admin_model->get_Service($id);
-		$array = json_decode(json_encode($data['services'][0]), true);
-		print_r($array['titulo']);
+		$data['user'] = $this->Admin_model->get_user($id);
+		$array = json_decode(json_encode($data['user'][0]), true);
+		print_r($array['correo']);
 	}
 
-	public function obtenerDetalleServicio($id)
+	public function obtenerUserName($id)
 	{
-		$data['services'] = $this->Admin_model->get_Service($id);
-		$array = json_decode(json_encode($data['services'][0]), true);
-		print_r($array['descripcion']);
+		$data['user'] = $this->Admin_model->get_user($id);		
+		$array = json_decode(json_encode($data['user'][0]), true);
+		print_r($array['username']);
 	}
 
-
-	public function obtenerDescripcionServicio($id)
+	public function obtenerRealName($id)
 	{
-		$data['services'] = $this->Admin_model->get_Service($id);
-		$array = json_decode(json_encode($data['services'][0]), true);
-		print_r($array['detalle']);
+		$data['user'] = $this->Admin_model->get_user($id);
+		$array = json_decode(json_encode($data['user'][0]), true);
+		print_r($array['realname']);
 	}
+
 
 
 	public function EliminarImagen($id)
 	{
 		$this->Admin_model->delete_Image($id);
-	}
-
-	public function EliminarServicio($id){
-		$this->Admin_model->delete_service($id);
 	}
 
 	function upload_photo()
@@ -266,4 +230,50 @@ class Admin extends CI_Controller
 		}
 		$this->index();
 	}
+
+	function guardarUsuario()
+	{
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('txt_clave', 'Post/message', 'required|max_length[128]');
+		$this->form_validation->set_rules('txt_usuario', 'Post/message', 'required|max_length[64]');
+		$this->form_validation->set_rules('txt_nombre', 'Post/message', 'required|max_length[64]');
+		$this->form_validation->set_rules('txt_correo', 'Post/message', 'required|max_length[50]');
+		if($this->form_validation->run())     
+        {   
+
+        	if($_POST['usuarios']==0){
+        		$params = array(
+				'username' => $this->input->post('txt_usuario'),
+				'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
+				'realname' => $this->input->post('txt_nombre'),
+                'correo' => $this->input->post('txt_correo'),
+            	);
+            
+            	$this->Admin_model->add_User($params);	
+        	}else{
+        		$params = array(
+        		'users_id'=> $_POST['usuarios'],	
+				'username' => $this->input->post('txt_usuario'),
+				'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
+				'realname' => $this->input->post('txt_nombre'),
+                'correo' => $this->input->post('txt_correo'),
+            	);
+            	$this->Admin_model->edit_User($params);	
+        	}
+
+            
+            
+            $data['message_display'] = 'Te has registrado exitosamente.';
+            redirect("admin/login");
+            //$this->load_data_view("admin/login");
+
+        }
+        else
+        {
+            $data['_view'] = 'admin/login';
+            $this->load->view('layouts/main',$data);
+        }
+	}
+
 }

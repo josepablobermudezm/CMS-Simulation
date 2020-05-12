@@ -61,7 +61,7 @@
           <span id="message_validation" class="error_message"></span>
         </div>
         <div class="row">
-          <input id="submit_button" type="button" value="Enviar" onclick="EnviarCorreo()" />
+          <input class="submit_button" type="button" value="Enviar" onclick="EnviarCorreo()" />
         </div>
       </div>
 

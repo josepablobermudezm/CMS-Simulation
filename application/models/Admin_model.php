@@ -30,10 +30,30 @@ class Admin_model extends CI_Model
 		}
 	}
 
+	public function get_user($id)
+	{
+		$query = $this->db->query("SELECT users.realname, users.username, users.correo, users.password,users.users_id from users 
+			WHERE users.users_id = '$id'");
+
+		if ($query->num_rows() == 1) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
+
+	public function get_all_users(){
+		return $this->db->query("SELECT users.realname, users.username, users.correo, users.password,users.users_id 
+                                FROM users
+                                ORDER BY users.realname ASC")->result_array();
+	}
+
 	public function delete_Image($id)
     {
         $this->db->delete('imagenes', array('id_imagen' => $id));
     }
+		
 
 	public function delete_service($id){
 		$this->db->delete('servicio', array('id_servicio' => $id));
@@ -69,6 +89,12 @@ class Admin_model extends CI_Model
 		return $this->db->insert_id();
 	}
 
+	public function add_User($params)
+	{
+		$this->db->insert('users', $params);
+		return $this->db->insert_id();
+	}
+
 	public function add_Image($params)
 	{
 		$this->db->insert('imagenes', $params);
@@ -89,6 +115,11 @@ class Admin_model extends CI_Model
 	public function edit_Services($params)
 	{
 		return $this->db->query("UPDATE servicio SET servicio.titulo = '" . $params['titulo'] . "', servicio.detalle = '" . $params['detalle'] . "', servicio.descripcion = '" . $params['descripcion'] . "' WHERE servicio.id_servicio = " . $params['id_servicio']);
+	}
+
+	public function edit_User($params)
+	{
+		return $this->db->query("UPDATE users SET users.username = '" . $params['username'] . "', users.correo = '" . $params['correo'] . "', users.realname = '" . $params['realname'] . "', users.password = '" . $params['password'] . "' WHERE users.users_id = " . $params['users_id']);
 	}
 
 	public function count_images(){

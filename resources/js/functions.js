@@ -251,6 +251,48 @@ function BlockInput(id) {
 	}
 }
 
+function BlockUser(id) {
+	if (id.value != '0') {
+
+		axios.get('obtenerUserName/' + id.value).then(function (response) { //En caso de carga exitosa del recurso
+			document.getElementById("txt_usuario").value = response.data;
+			
+		})
+			.catch(function (error) { //En caso de carga fallida del recurso
+			});
+
+		axios.get('obtenerRealName/' + id.value).then(function (response) { //En caso de carga exitosa del recurso
+			document.getElementById("txt_nombre").value = response.data;
+		})
+			.catch(function (error) { //En caso de carga fallida del recurso
+			});
+
+		axios.get('obtenerCorreo/' + id.value).then(function (response) { //En caso de carga exitosa del recurso
+			document.getElementById("txt_correo").value = response.data;
+			console.log(response.data);
+		})
+			.catch(function (error) { //En caso de carga fallida del recurso
+			});
+
+	}
+}
+
+var admin = "div_secciones";
+function change(nombre){
+	if(nombre =='salir'){
+		console.log("XD");
+		axios.get('logout').then(function (response) { //En caso de carga exitosa del recurso
+			
+		})
+		.catch(function (error) { //En caso de carga fallida del recurso
+		});
+	}else{
+		document.getElementById(admin).className = "main_panel2";
+		document.getElementById(nombre).className = "main_panel1";
+		admin = nombre;
+	}
+}
+
 function EnviarCorreo(){
 	var name = document.getElementById('name').value;
 	var email = document.getElementById('email').value
