@@ -7,8 +7,6 @@
       <?php echo form_open_multipart('admin/logout'); ?>
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">&#10005</button>
       <?php echo form_close(); ?> 
-      
-
     </div>
     
     <div id="divBoton">
