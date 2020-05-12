@@ -30,58 +30,7 @@ class Admin extends CI_Controller
 		$this->load->view('layouts/main', $data);
 	}
 
-	function editarGuardar()
-	{
 
-		$config['upload_path']          = './resources/photos/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 2000; //2MB
-		$config['overwrite']            = true;
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('titulo', 'Post/name', 'required|max_length[50]');
-		$this->form_validation->set_rules('descripcion', 'Post/message', 'required|max_length[10000]');
-
-		$this->load->library('upload', $config);
-
-		if (!$this->upload->do_upload('txt_file')) {
-			$error = array('error' => $this->upload->display_errors());
-			$this->session->set_flashdata('error', $error['error']);
-		} else {
-			$data = array('upload_data' => $this->upload->data());
-			$params = array(
-				'photo' => $this->upload->data('file_name')
-			);
-
-			$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
-
-			if ($_POST['secciones'] == "0") {
-				$params = array(
-					'imagen' => $this->upload->data('file_name'),
-					'titulo' => $this->input->post('titulo'),
-					'detalle' => $this->input->post('descripcion')
-				);
-				$this->Admin_model->add_Seccion($params);
-			} else if ($_POST['secciones'] == "4") {
-
-				$params = array(
-					'imagen' => $this->upload->data('file_name'),
-					'descripcion' => $this->input->post('descripcion')
-				);
-				if ($this->Admin_model->count_images()) {
-					$this->Admin_model->add_Image($params);
-				}
-			} else {
-				$params = array(
-					'id_secciones' => $this->input->post('secciones'),
-					'imagen' => $this->upload->data('file_name'),
-					'titulo' => $this->input->post('titulo'),
-					'detalle' => $this->input->post('descripcion')
-				);
-				$this->Admin_model->edit_Section($params);
-			}
-			redirect('/admin/login', 'refresh');
-		}
-	}
 
 	//Proceso de autenticación Login
 	public function login()
@@ -231,14 +180,72 @@ class Admin extends CI_Controller
 		$this->index();
 	}
 
+	function editarGuardar()
+	{
+
+		$config['upload_path']          = './resources/photos/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 2000; //2MB
+		$config['overwrite']            = true;
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('titulo', 'Post/name', 'required|max_length[50]');
+		$this->form_validation->set_rules('descripcion', 'Post/message', 'required|max_length[10000]');
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('txt_file')) {
+			$error = array('error' => $this->upload->display_errors());
+			$this->session->set_flashdata('error', $error['error']);
+		} else if($this->form_validation->run()){
+			$data = array('upload_data' => $this->upload->data());
+			$params = array(
+				'photo' => $this->upload->data('file_name')
+			);
+
+			$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
+
+			if ($_POST['secciones'] == "0") {
+				$params = array(
+					'imagen' => $this->upload->data('file_name'),
+					'titulo' => $this->input->post('titulo'),
+					'detalle' => $this->input->post('descripcion')
+				);
+				$this->Admin_model->add_Seccion($params);
+			} else if ($_POST['secciones'] == "4") {
+
+				$params = array(
+					'imagen' => $this->upload->data('file_name'),
+					'descripcion' => $this->input->post('descripcion')
+				);
+				if ($this->Admin_model->count_images()) {
+					$this->Admin_model->add_Image($params);
+				}
+			} else {
+				$params = array(
+					'id_secciones' => $this->input->post('secciones'),
+					'imagen' => $this->upload->data('file_name'),
+					'titulo' => $this->input->post('titulo'),
+					'detalle' => $this->input->post('descripcion')
+				);
+				$this->Admin_model->edit_Section($params);
+			}
+			
+			$data['message_display'] = 'Registrado exitosamente.';
+            redirect('/admin/login', 'refresh');
+		}else{
+			$data['_view'] = '/admin/login';
+            $this->load->view('layouts/main',$data);
+		}
+	}
+
 	function guardarUsuario()
 	{
 
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('txt_clave', 'Post/message', 'required|max_length[128]');
-		$this->form_validation->set_rules('txt_usuario', 'Post/message', 'required|max_length[64]');
-		$this->form_validation->set_rules('txt_nombre', 'Post/message', 'required|max_length[64]');
-		$this->form_validation->set_rules('txt_correo', 'Post/message', 'required|max_length[50]');
+		$this->form_validation->set_rules('txt_clave', 'Clave', 'required|max_length[128]');
+		$this->form_validation->set_rules('txt_usuario', 'Usuario', 'required|max_length[64]');
+		$this->form_validation->set_rules('txt_nombre', 'Nombre', 'required|max_length[64]');
+		$this->form_validation->set_rules('txt_correo', 'Correo', 'required|max_length[50]');
 		if($this->form_validation->run())     
         {   
 
@@ -265,13 +272,13 @@ class Admin extends CI_Controller
             
             
             $data['message_display'] = 'Te has registrado exitosamente.';
-            redirect("admin/login");
+            redirect('/admin/login', 'refresh');
             //$this->load_data_view("admin/login");
 
         }
         else
         {
-            $data['_view'] = 'admin/login';
+            $data['_view'] = '/admin/login';
             $this->load->view('layouts/main',$data);
         }
 	}

@@ -18,14 +18,14 @@
     </div>
     
     <div id="divGrande">
+       <?php echo form_open_multipart('admin/editarGuardar/'); ?>
       <div id="div_secciones" class="main_panel1">
-        <?php echo form_open_multipart('admin/editarGuardar/'); ?>
         <div class="row">
           <select id="secciones" name="secciones" onclick="BlockInput(this)">
             <option value="0" selected>Elegir Sección</option>
-            <?php foreach ($sections as $s) { ?>
+            <?php foreach ($sections as $s) { if($s['titulo']!='Contacto'){?>
               <option id="<?php echo $s['id_secciones']; ?><?php echo $s['titulo']; ?><?php echo $s['imagen']; ?><?php echo $s['detalle']; ?>" value="<?php echo $s['id_secciones']; ?>"><?php echo $s['titulo']; ?></option>
-            <?php } ?>
+            <?php } } ?>
           </select>
         </div>
         <div class="row">
@@ -89,8 +89,8 @@
         <div id="caja_delete_serv">
           <input id="btn_eliminarServ" type="button" value="Eliminar Servicio" onclick="EliminarServicio()" />
         </div>
-        <?php echo form_close(); ?>
       </div>
+      <?php echo form_close(); ?>
       <?php echo form_open_multipart('admin/guardarUsuario/'); ?>
       <div id="usuarios" class="main_panel2">
         <div class="row">
@@ -105,23 +105,20 @@
         </div>
         <div class="row">
           <input id="txt_nombre" class="txt_nombre" name="txt_nombre" type="text" value="" placeholder="Nombre Real" size="64" /><br />
-          <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
           <input id="txt_correo" class="txt_correo" name="txt_correo" type="text" value="" placeholder="Correo" size="50" /><br />
-          <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
           <input id="txt_usuario" class="txt_usuario" name="txt_usuario" type="text" value="" placeholder="Nombre de usuario" size="64" /><br />
-          <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
           <input id="txt_clave" class="txt_clave" name="txt_clave" type="password" value="" placeholder="Clave" size="128" /><br />
-          <span id="email_validation" class="error_message"></span>
         </div>
         <div class="row">
           <input class="submit_button" type="submit" value="Guardar" />
         </div>
+        <span id="email_validation" class="error_message"></span>
       </div>
       <?php echo form_close(); ?>
     </div>
