@@ -643,6 +643,10 @@ input[type=text], select, textarea, input[type=password]{
 	width: 100%;
 }
 
+#btn_eliminarServ:hover{
+	background-color: #45a049;
+}
+
 .submit_button {
 	background-color: #4CAF50;
 	color: white;
