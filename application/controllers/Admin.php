@@ -337,5 +337,8 @@ class Admin extends CI_Controller
             $this->load->view('layouts/main',$data);
         }
 	}
+	public function EliminarServicio($id){
+		$this->Admin_model->delete_service($id);
+	}
 
 }
