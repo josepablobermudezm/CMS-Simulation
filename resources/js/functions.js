@@ -42,7 +42,7 @@ function recargarElemento2(page, element) {
 		document.getElementById(element).innerHTML = temphtml.querySelector("#" + element).innerHTML;
 		document.getElementById("row2").style.display = 'block';
 		document.getElementById("container2").style.display = 'block';
-		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.set('notifier', 'position', 'top-right');
 		alertify.success('Imágen eliminada exitosamente');
 	})
 		.catch(function (error) {
@@ -147,20 +147,20 @@ function ServiceInput(id) {
 	}
 }
 
-function EliminarServicio(){
-	if(document.getElementById("serviciosSELECT").value != "0"){
+function EliminarServicio() {
+	if (document.getElementById("serviciosSELECT").value != "0") {
 		console.log(document.getElementById("serviciosSELECT").value);
 		axios.get('EliminarServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
 			recargarElemento3("http://localhost/Proyecto/admin/login", "divGrande");
 		})
 	}
-	else{
-		alertify.set('notifier', 'position', 'top-right'); 
+	else {
+		alertify.set('notifier', 'position', 'top-right');
 		alertify.error('Debes Seleccionar el Servicio');
 	}
 }
 
-function recargarElemento3(page, element){
+function recargarElemento3(page, element) {
 	axios.post(page).then(function (response) {
 		//En caso de carga exitosa del recurso
 		var temphtml = document.createElement('div'); temphtml.innerHTML = response.data;
@@ -173,13 +173,17 @@ function recargarElemento3(page, element){
 		document.getElementById("Descripcionservicio").style.display = "block";
 		document.getElementById("btn_eliminarServ").style.display = 'block';
 
-		alertify.set('notifier', 'position', 'top-right'); 
+		alertify.set('notifier', 'position', 'top-right');
 		alertify.success('Servicio Eliminado Correctamente');
 	})
 		.catch(function (error) {
 			//En caso de carga fallida del recurso 
 		});
 }
+
+
+
+
 
 function BlockInput(id) {
 
@@ -221,7 +225,7 @@ function BlockInput(id) {
 			//servicios
 			document.getElementById("titulo").style.display = 'block';
 			document.getElementById("descripcion").style.display = 'block';
-			
+
 
 			document.getElementById("TituloServicio").style.display = "none";
 			document.getElementById("DetalleServicio").style.display = "none";
@@ -255,7 +259,7 @@ function BlockUser(id) {
 
 		axios.get('obtenerUserName/' + id.value).then(function (response) { //En caso de carga exitosa del recurso
 			document.getElementById("txt_usuario").value = response.data;
-			
+
 		})
 			.catch(function (error) { //En caso de carga fallida del recurso
 			});
@@ -277,26 +281,26 @@ function BlockUser(id) {
 }
 
 var admin = "div_secciones";
-function change(nombre){
-	if(nombre =='salir'){
+function change(nombre) {
+	if (nombre == 'salir') {
 		console.log("XD");
 		axios.get('logout').then(function (response) { //En caso de carga exitosa del recurso
-			
+
 		})
-		.catch(function (error) { //En caso de carga fallida del recurso
-		});
-	}else{
+			.catch(function (error) { //En caso de carga fallida del recurso
+			});
+	} else {
 		document.getElementById(admin).className = "main_panel2";
 		document.getElementById(nombre).className = "main_panel1";
 		admin = nombre;
 	}
 }
 
-function EnviarCorreo(){
+function EnviarCorreo() {
 	var name = document.getElementById('name').value;
 	var email = document.getElementById('email').value
 	var message = document.getElementById('message').value
-	if(name != "" && email != "" && message != ""){
+	if (name != "" && email != "" && message != "") {
 		var formdata = new FormData();
 		formdata.append('name', document.getElementById('name').value);
 		formdata.append('email', document.getElementById('email').value);
@@ -305,19 +309,125 @@ function EnviarCorreo(){
 			recargarElemento4("http://localhost/Proyecto/web/index", "div_6");
 		}).catch(function (error) { });
 	}
-	else{
-		alertify.set('notifier', 'position', 'top-right'); 
+	else {
+		alertify.set('notifier', 'position', 'top-right');
 		alertify.error('Digita tus datos');
 	}
-	
 }
 
-function recargarElemento4(page, element){
+
+
+function recargarElemento5(page, element, seccion) {
+
+	var seccionValue = document.getElementById("secciones").value;
+	var seccionInner = document.getElementById("secciones").options[document.getElementById("secciones").selectedIndex].text;
+
 	axios.post(page).then(function (response) {
 		//En caso de carga exitosa del recurso
 		var temphtml = document.createElement('div'); temphtml.innerHTML = response.data;
 		document.getElementById(element).innerHTML = temphtml.querySelector("#" + element).innerHTML;
-		alertify.set('notifier', 'position', 'top-right'); 
+		if (seccion == "galeria") {
+			document.getElementById("titulo").style.display = 'none';
+			document.getElementById("imagenS").style.display = 'none';
+			document.getElementById("row2").style.display = 'block';
+			document.getElementById("container2").style.display = 'block';
+		} else if (seccion == "servicios") {
+			document.getElementById("titulo").style.display = 'none';
+			document.getElementById("descripcion").style.display = 'none';
+			document.getElementById("TituloServicio").style.display = "block";
+			document.getElementById("DetalleServicio").style.display = "block";
+			document.getElementById("Descripcionservicio").style.display = "block";
+			document.getElementById("btn_eliminarServ").style.display = 'block';
+		} else {
+			document.getElementById("titulo").style.display = 'block';
+			document.getElementById("descripcion").style.display = 'block';
+			document.getElementById("imagenS").style.display = 'block';
+			document.getElementById("container2").style.display = 'none';
+			document.getElementById("row2").style.display = 'none';
+			document.getElementById("TituloServicio").style.display = "none";
+			document.getElementById("DetalleServicio").style.display = "none";
+			document.getElementById("Descripcionservicio").style.display = "none";
+			document.getElementById("btn_eliminarServ").style.display = 'none';
+		}
+		document.getElementById("secciones").value = seccionValue;
+		document.getElementById("secciones").text = seccionInner;
+		alertify.set('notifier', 'position', 'top-right');
+		alertify.success('Datos ingresados Correctamente');
+	}).catch(function (error) { });
+}
+
+function GuardarSeccion() {
+
+	var formdata = new FormData();
+
+	if (document.getElementById("secciones").value != '0') {
+		if (document.getElementById("secciones").value == "4") {//galería
+			if (document.getElementById('txt_file').value != "" && document.getElementById('descripcion').value != "") {
+				formdata.append('txt_file', document.getElementById('txt_file').files[0]);
+				formdata.append('detalle', document.getElementById('descripcion').value);
+				formdata.append('secciones', document.getElementById("secciones").value);
+				formdata.append('galeria', true);
+				axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
+					recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "galeria");
+				}).catch(function (error) { });
+			} else {
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.error('Hay datos que son obligatorios');
+			}
+		}
+		else if (document.getElementById("secciones").value == "5") {//servicios
+			if (document.getElementById('txt_file').value != "" && document.getElementById('descripcionS').value != ""
+				&& document.getElementById('detalleS').value != "" && document.getElementById('tituloS').value != "") {
+				formdata.append('txt_file', document.getElementById('txt_file').files[0]);
+				formdata.append('descripcionS', document.getElementById('descripcionS').value);
+				formdata.append('detalleS', document.getElementById('detalleS').value);
+				formdata.append('tituloS', document.getElementById('tituloS').value);
+				formdata.append('servicio', document.getElementById("serviciosSELECT").value);
+				formdata.append('secciones', document.getElementById("secciones").value);
+				formdata.append('servicios', true);
+				axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
+					recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "servicios");
+				}).catch(function (error) { });
+			} else {
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.error('Hay datos que son obligatorios');
+			}
+		} else if (document.getElementById('txt_file').value != "" && document.getElementById('titulo').value != "" &&
+			document.getElementById('descripcion').value != "") {
+			formdata.append('txt_file', document.getElementById('txt_file').files[0]);
+			formdata.append('titulo', document.getElementById('titulo').value);
+			formdata.append('detalle', document.getElementById('descripcion').value);
+			formdata.append('secciones', document.getElementById("secciones").value);
+			axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
+				recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "secciones");
+			}).catch(function (error) { });
+		} else {
+			alertify.set('notifier', 'position', 'top-right');
+			alertify.error('Hay datos que son obligatorios');
+		}
+	} else if (document.getElementById('txt_file').value != "" && document.getElementById('titulo').value != "" &&
+		document.getElementById('descripcion').value != "") {
+		formdata.append('txt_file', document.getElementById('txt_file').files[0]);
+		formdata.append('titulo', document.getElementById('titulo').value);
+		formdata.append('detalle', document.getElementById('descripcion').value);
+		formdata.append('secciones', document.getElementById("secciones").value);
+		formdata.append('estandar', true);
+		axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
+			recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "secciones");
+		}).catch(function (error) { });
+	} else {
+		alertify.set('notifier', 'position', 'top-right');
+		alertify.error('Hay datos que son obligatorios');
+	}
+}
+
+
+function recargarElemento4(page, element) {
+	axios.post(page).then(function (response) {
+		//En caso de carga exitosa del recurso
+		var temphtml = document.createElement('div'); temphtml.innerHTML = response.data;
+		document.getElementById(element).innerHTML = temphtml.querySelector("#" + element).innerHTML;
+		alertify.set('notifier', 'position', 'top-right');
 		alertify.success('Correo enviado y guardado Correctamente');
 	})
 		.catch(function (error) {

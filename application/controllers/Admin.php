@@ -157,7 +157,7 @@ class Admin extends CI_Controller
 
 	public function obtenerUserName($id)
 	{
-		$data['user'] = $this->Admin_model->get_user($id);		
+		$data['user'] = $this->Admin_model->get_user($id);
 		$array = json_decode(json_encode($data['user'][0]), true);
 		print_r($array['username']);
 	}
@@ -205,7 +205,6 @@ class Admin extends CI_Controller
 
 	function editarGuardar()
 	{
-
 		$config['upload_path']          = './resources/photos/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 2000; //2MB
@@ -219,33 +218,26 @@ class Admin extends CI_Controller
 		if (!$this->upload->do_upload('txt_file')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->session->set_flashdata('error', $error['error']);
-		} else if($this->form_validation->run()){
-			$data = array('upload_data' => $this->upload->data());
-			$params = array(
-				'photo' => $this->upload->data('file_name')
-			);
-
-			$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
-
-			if ($_POST['secciones'] == "0") {
+		} else {
+			if (isset($_POST['estandar'])) { //sección normal
 				$params = array(
 					'imagen' => $this->upload->data('file_name'),
 					'titulo' => $this->input->post('titulo'),
-					'detalle' => $this->input->post('descripcion')
+					'detalle' => $this->input->post('detalle')
 				);
 				$this->Admin_model->add_Seccion($params);
-			} else if ($_POST['secciones'] == "4") {
+			} else if (isset($_POST['galeria'])) { //galería
 
 				$params = array(
 					'imagen' => $this->upload->data('file_name'),
-					'descripcion' => $this->input->post('descripcion')
+					'descripcion' => $this->input->post('detalle')
 				);
 				if ($this->Admin_model->count_images()) {
 					$this->Admin_model->add_Image($params);
 				}
-			} else if ($_POST['secciones'] == "5") {
+			} else if (isset($_POST['servicios'])) { //servicios
 
-				if ($_POST['serviciosSELECT'] == "0") {
+				if ($_POST['servicio'] == "0") {
 					$params = array( // se agregan servicios
 						'descripcion' => $this->input->post('detalleS'),
 						'detalle' => $this->input->post('descripcionS'),
@@ -259,9 +251,9 @@ class Admin extends CI_Controller
 						'imagen' => $this->upload->data('file_name'),
 					);
 					$this->Admin_model->edit_Section($params);
-				}else{
-					$params = array( // se agregan servicios
-						'id_servicio' => $this->input->post('serviciosSELECT'),
+				} else {
+					$params = array( // se editan servicios
+						'id_servicio' => $this->input->post('servicio'),
 						'descripcion' => $this->input->post('detalleS'),
 						'detalle' => $this->input->post('descripcionS'),
 						'titulo' => $this->input->post('tituloS'),
@@ -275,21 +267,15 @@ class Admin extends CI_Controller
 					);
 					$this->Admin_model->edit_Section($params);
 				}
-			} else  {
+			} else {
 				$params = array(
 					'id_secciones' => $this->input->post('secciones'),
 					'imagen' => $this->upload->data('file_name'),
 					'titulo' => $this->input->post('titulo'),
-					'detalle' => $this->input->post('descripcion')
+					'detalle' => $this->input->post('detalle')
 				);
 				$this->Admin_model->edit_Section($params);
 			}
-			
-			$data['message_display'] = 'Registrado exitosamente.';
-            redirect('/admin/login', 'refresh');
-		}else{
-			$data['_view'] = '/admin/login';
-            $this->load->view('layouts/main',$data);
 		}
 	}
 
@@ -301,44 +287,41 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('txt_usuario', 'Usuario', 'required|max_length[64]');
 		$this->form_validation->set_rules('txt_nombre', 'Nombre', 'required|max_length[64]');
 		$this->form_validation->set_rules('txt_correo', 'Correo', 'required|max_length[50]');
-		if($this->form_validation->run())     
-        {   
+		if ($this->form_validation->run()) {
 
-        	if($_POST['usuarios']==0){
-        		$params = array(
-				'username' => $this->input->post('txt_usuario'),
-				'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
-				'realname' => $this->input->post('txt_nombre'),
-                'correo' => $this->input->post('txt_correo'),
-            	);
-            
-            	$this->Admin_model->add_User($params);	
-        	}else{
-        		$params = array(
-        		'users_id'=> $_POST['usuarios'],	
-				'username' => $this->input->post('txt_usuario'),
-				'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
-				'realname' => $this->input->post('txt_nombre'),
-                'correo' => $this->input->post('txt_correo'),
-            	);
-            	$this->Admin_model->edit_User($params);	
-        	}
+			if ($_POST['usuarios'] == 0) {
+				$params = array(
+					'username' => $this->input->post('txt_usuario'),
+					'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
+					'realname' => $this->input->post('txt_nombre'),
+					'correo' => $this->input->post('txt_correo'),
+				);
 
-            
-            
-            $data['message_display'] = 'Te has registrado exitosamente.';
-            redirect('/admin/login', 'refresh');
-            //$this->load_data_view("admin/login");
+				$this->Admin_model->add_User($params);
+			} else {
+				$params = array(
+					'users_id' => $_POST['usuarios'],
+					'username' => $this->input->post('txt_usuario'),
+					'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
+					'realname' => $this->input->post('txt_nombre'),
+					'correo' => $this->input->post('txt_correo'),
+				);
+				$this->Admin_model->edit_User($params);
+			}
 
-        }
-        else
-        {
-            $data['_view'] = '/admin/login';
-            $this->load->view('layouts/main',$data);
-        }
+
+
+			$data['message_display'] = 'Te has registrado exitosamente.';
+			redirect('/admin/login', 'refresh');
+			//$this->load_data_view("admin/login");
+
+		} else {
+			$data['_view'] = '/admin/login';
+			$this->load->view('layouts/main', $data);
+		}
 	}
-	public function EliminarServicio($id){
+	public function EliminarServicio($id)
+	{
 		$this->Admin_model->delete_service($id);
 	}
-
 }

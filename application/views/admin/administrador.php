@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="row">
-          <input class="submit_button" type="submit" value="Guardar" />
+          <input class="submit_button" type="button" value="Guardar" onclick="GuardarSeccion()" />
         </div>
         <div id="caja_delete_serv">
           <input id="btn_eliminarServ" type="button" value="Eliminar Servicio" onclick="EliminarServicio()" />
