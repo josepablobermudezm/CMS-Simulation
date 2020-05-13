@@ -130,7 +130,6 @@ function enlargeImg(imgs) {
 	enlarge.name = imgs.name;
 	imgText.innerHTML = imgs.alt;
 }
-
 function ServiceInput(id) {
 
 	if (id.value != '0') {
