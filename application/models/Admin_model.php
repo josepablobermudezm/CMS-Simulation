@@ -43,19 +43,21 @@ class Admin_model extends CI_Model
 	}
 
 
-	public function get_all_users(){
+	public function get_all_users()
+	{
 		return $this->db->query("SELECT users.realname, users.username, users.correo, users.password,users.users_id 
                                 FROM users
                                 ORDER BY users.realname ASC")->result_array();
 	}
 
 	public function delete_Image($id)
-    {
-        $this->db->delete('imagenes', array('id_imagen' => $id));
-    }
-		
+	{
+		$this->db->delete('imagenes', array('id_imagen' => $id));
+	}
 
-	public function delete_service($id){
+
+	public function delete_service($id)
+	{
 		$this->db->delete('servicio', array('id_servicio' => $id));
 	}
 
@@ -92,7 +94,7 @@ class Admin_model extends CI_Model
 	public function add_User($params)
 	{
 		$this->db->insert('users', $params);
-		return $this->db->insert_id();
+		return $this->db->insert_id();;
 	}
 
 	public function add_Image($params)
@@ -122,7 +124,8 @@ class Admin_model extends CI_Model
 		return $this->db->query("UPDATE users SET users.username = '" . $params['username'] . "', users.correo = '" . $params['correo'] . "', users.realname = '" . $params['realname'] . "', users.password = '" . $params['password'] . "' WHERE users.users_id = " . $params['users_id']);
 	}
 
-	public function count_images(){
+	public function count_images()
+	{
 		$query = $this->db->query("SELECT imagenes.* from imagenes");
 
 		if ($query->num_rows() < 10) {

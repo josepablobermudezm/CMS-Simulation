@@ -3,27 +3,28 @@
   <div id="panel_app">
 
     <div id="user_top">
-      <?php echo "<label> Bienvenido ".$this->session->userdata['logged_in']['realname'] . "</label>"; ?> 
+      <?php echo "<label> Bienvenido " . $this->session->userdata['logged_in']['realname'] . "</label>"; ?>
       <?php echo form_open_multipart('admin/logout'); ?>
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">&#10005</button>
-      <?php echo form_close(); ?> 
+      <?php echo form_close(); ?>
     </div>
-    
+
     <div id="divBoton">
 
-      <div id="menu2"> <button  id="menu" onclick="change('div_secciones')">Editar Secciones</button> </div>
-      <div id="menu2"><button id="menu" onclick="change('usuarios')">Agregar/Editar Usuarios</button> </div>
+      <div id="menu2"> <button id="menu" onclick="change('div_secciones')">Editar Secciones</button> </div>
+      <div id="menu2"><button id="menu" onclick="change('usuariosDiv')">Agregar/Editar Usuarios</button> </div>
     </div>
-    
+
     <div id="divGrande">
-       <?php echo form_open_multipart('admin/editarGuardar/'); ?>
       <div id="div_secciones" class="main_panel1">
         <div class="row">
           <select id="secciones" name="secciones" onclick="BlockInput(this)">
             <option value="0" selected>Elegir Sección</option>
-            <?php foreach ($sections as $s) { if($s['titulo']!='Contacto'){?>
-              <option id="<?php echo $s['id_secciones']; ?><?php echo $s['titulo']; ?><?php echo $s['imagen']; ?><?php echo $s['detalle']; ?>" value="<?php echo $s['id_secciones']; ?>"><?php echo $s['titulo']; ?></option>
-            <?php } } ?>
+            <?php foreach ($sections as $s) {
+              if ($s['titulo'] != 'Contacto') { ?>
+                <option id="<?php echo $s['id_secciones']; ?><?php echo $s['titulo']; ?><?php echo $s['imagen']; ?><?php echo $s['detalle']; ?>" value="<?php echo $s['id_secciones']; ?>"><?php echo $s['titulo']; ?></option>
+            <?php }
+            } ?>
           </select>
         </div>
         <div class="row">
@@ -88,17 +89,13 @@
           <input id="btn_eliminarServ" type="button" value="Eliminar Servicio" onclick="EliminarServicio()" />
         </div>
       </div>
-      <?php echo form_close(); ?>
-      <?php echo form_open_multipart('admin/guardarUsuario/'); ?>
-      <div id="usuarios" class="main_panel2">
+      <div id="usuariosDiv" class="main_panel2">
         <div class="row">
           <select id="usuarios" name="usuarios" onclick="BlockUser(this)">
             <option value="0" selected>Elegir un Usuario</option>
-            <?php foreach ($users as $u) { ?>
-              <option id="user_<?php echo $u['users_id'];?>" value="<?php echo $u['users_id']; ?>">
-                <?php echo $u['realname']; ?>
-              </option>
-            <?php } ?>
+            <option id="user_<?php echo $this->session->userdata['logged_in']['users_id']; ?>" value="<?php echo $this->session->userdata['logged_in']['users_id']; ?>">
+              <?php echo $this->session->userdata['logged_in']['realname']; ?>
+            </option>
           </select>
         </div>
         <div class="row">
@@ -114,18 +111,15 @@
           <input id="txt_clave" class="txt_clave" name="txt_clave" type="password" value="" placeholder="Clave" size="128" /><br />
         </div>
         <div class="row">
-          <input class="submit_button" type="submit" value="Guardar" />
+          <input class="submit_button" type="button" value="Guardar" onclick="guardarUsuario()">
         </div>
         <span id="email_validation" class="error_message"></span>
       </div>
-      <?php echo form_close(); ?>
     </div>
-
-
   </div>
 
 
-  <?php
+<?php
 } else {
   header("location: " . base_url()); //dirección de arranque especificada en config.php y luego en routes.php
 }

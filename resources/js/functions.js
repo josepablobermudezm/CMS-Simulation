@@ -272,11 +272,15 @@ function BlockUser(id) {
 
 		axios.get('obtenerCorreo/' + id.value).then(function (response) { //En caso de carga exitosa del recurso
 			document.getElementById("txt_correo").value = response.data;
-			console.log(response.data);
 		})
 			.catch(function (error) { //En caso de carga fallida del recurso
 			});
 
+	}else{
+		document.getElementById("txt_usuario").value = "";
+		document.getElementById("txt_nombre").value  = "";
+		document.getElementById("txt_correo").value = "";
+		document.getElementById("txt_clave").value = "";
 	}
 }
 
@@ -481,3 +485,28 @@ function before2() {
 		}
 	}
 }
+
+function guardarUsuario() {
+
+	var formdata = new FormData();
+	if (document.getElementById('txt_nombre').value != "" && document.getElementById('txt_usuario').value != ""
+		&& document.getElementById('txt_correo').value != "" && document.getElementById('txt_clave').value != "") {
+		formdata.append('txt_nombre', document.getElementById('txt_nombre').value);
+		formdata.append('txt_correo', document.getElementById('txt_correo').value);
+		formdata.append('txt_usuario', document.getElementById("txt_usuario").value);
+		formdata.append('txt_clave', document.getElementById("txt_clave").value);
+		formdata.append('usuarios', document.getElementById("usuarios").value);
+		axios.post('guardarUsuario', formdata).then(function (response) { //En caso de carga exitosa del recurso
+			recargarElemento("http://localhost/Proyecto/admin/login", "usuariosDiv");
+			alertify.set('notifier', 'position', 'top-right');
+			alertify.success('Elementos guardados con exito');
+		}).catch(function (error) {
+			console.log(error);
+			alertify.set('notifier', 'position', 'top-right');
+			alertify.error("Error al guardar, verifica que el nombre de usuario o correo no existan ya en el sistema");
+		 });
+	} else {
+		alertify.set('notifier', 'position', 'top-right');
+		alertify.error('Hay datos que son obligatorios');
+	}
+}	

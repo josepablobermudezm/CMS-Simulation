@@ -277,6 +277,7 @@ class Admin extends CI_Controller
 				$this->Admin_model->edit_Section($params);
 			}
 		}
+		$this->load_data_view("admin/administrador");
 	}
 
 	function guardarUsuario()
@@ -287,6 +288,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('txt_usuario', 'Usuario', 'required|max_length[64]');
 		$this->form_validation->set_rules('txt_nombre', 'Nombre', 'required|max_length[64]');
 		$this->form_validation->set_rules('txt_correo', 'Correo', 'required|max_length[50]');
+		
 		if ($this->form_validation->run()) {
 
 			if ($_POST['usuarios'] == 0) {
@@ -296,8 +298,8 @@ class Admin extends CI_Controller
 					'realname' => $this->input->post('txt_nombre'),
 					'correo' => $this->input->post('txt_correo'),
 				);
-
 				$this->Admin_model->add_User($params);
+				
 			} else {
 				$params = array(
 					'users_id' => $_POST['usuarios'],
@@ -306,18 +308,17 @@ class Admin extends CI_Controller
 					'realname' => $this->input->post('txt_nombre'),
 					'correo' => $this->input->post('txt_correo'),
 				);
+				
 				$this->Admin_model->edit_User($params);
 			}
 
-
-
-			$data['message_display'] = 'Te has registrado exitosamente.';
-			redirect('/admin/login', 'refresh');
-			//$this->load_data_view("admin/login");
+			//$data['message_display'] = 'Te has registrado exitosamente.';
+			//redirect('/admin/administrador', 'refresh');
+			//$this->load_data_view("admin/administrador");
 
 		} else {
-			$data['_view'] = '/admin/login';
-			$this->load->view('layouts/main', $data);
+			//$data['_view'] = '/admin/login';
+			//$this->load->view('layouts/main', $data);
 		}
 	}
 	public function EliminarServicio($id)
