@@ -59,7 +59,6 @@ class Admin extends CI_Controller
 				'username' => $this->input->post('txt_username'),
 				'password' => $this->input->post('txt_password')
 			);
-
 			$result = $this->Admin_model->login($data); //Función login del Modelo Auth
 
 			if ($result == TRUE) { //Si autenticamos
