@@ -64,7 +64,7 @@ function MyWebSocketCall() {
 
 		ws.onmessage = function (evt) {
 			//cada vez que alguien envía un msj se actualiza la ventana de tweets de forma asincrónica 
-			recargarElemento("http://localhost/Proyecto/web/index", "main_panel");
+			recargarElemento("http://localhost/proyecto/web/index", "main_panel");
 			console.log("Message is received: " + evt.data);
 			//evt.data contiene el msj recibido 
 		};
@@ -151,7 +151,7 @@ function EliminarServicio() {
 	if (document.getElementById("serviciosSELECT").value != "0") {
 		console.log(document.getElementById("serviciosSELECT").value);
 		axios.get('EliminarServicio/' + document.getElementById("serviciosSELECT").value).then(function (response) { //En caso de carga exitosa del recurso
-			recargarElemento3("http://localhost/Proyecto/admin/login", "divGrande");
+			recargarElemento3("http://localhost/proyecto/admin/login", "divGrande");
 		})
 	}
 	else {
@@ -310,7 +310,7 @@ function EnviarCorreo() {
 		formdata.append('email', document.getElementById('email').value);
 		formdata.append('message', document.getElementById('message').value);
 		axios.post('web/correo', formdata).then(function (response) { //En caso de carga exitosa del recurso
-			recargarElemento4("http://localhost/Proyecto/web/index", "div_6");
+			recargarElemento4("http://localhost/proyecto/web/index", "div_6");
 		}).catch(function (error) { });
 	}
 	else {
@@ -372,7 +372,7 @@ function GuardarSeccion() {
 				formdata.append('secciones', document.getElementById("secciones").value);
 				formdata.append('galeria', true);
 				axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
-					recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "galeria");
+					recargarElemento5("http://localhost/proyecto/admin/login", "divGrande", "galeria");
 				}).catch(function (error) { });
 			} else {
 				alertify.set('notifier', 'position', 'top-right');
@@ -390,7 +390,7 @@ function GuardarSeccion() {
 				formdata.append('secciones', document.getElementById("secciones").value);
 				formdata.append('servicios', true);
 				axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
-					recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "servicios");
+					recargarElemento5("http://localhost/proyecto/admin/login", "divGrande", "servicios");
 				}).catch(function (error) { });
 			} else {
 				alertify.set('notifier', 'position', 'top-right');
@@ -403,7 +403,7 @@ function GuardarSeccion() {
 			formdata.append('detalle', document.getElementById('descripcion').value);
 			formdata.append('secciones', document.getElementById("secciones").value);
 			axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
-				recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "secciones");
+				recargarElemento5("http://localhost/proyecto/admin/login", "divGrande", "secciones");
 			}).catch(function (error) { });
 		} else {
 			alertify.set('notifier', 'position', 'top-right');
@@ -417,7 +417,7 @@ function GuardarSeccion() {
 		formdata.append('secciones', document.getElementById("secciones").value);
 		formdata.append('estandar', true);
 		axios.post('editarGuardar', formdata).then(function (response) { //En caso de carga exitosa del recurso
-			recargarElemento5("http://localhost/Proyecto/admin/login", "divGrande", "secciones");
+			recargarElemento5("http://localhost/proyecto/admin/login", "divGrande", "secciones");
 		}).catch(function (error) { });
 	} else {
 		alertify.set('notifier', 'position', 'top-right');
@@ -447,7 +447,7 @@ function ChangeImage() {
 function deleteImg() {
 
 	axios.get('EliminarImagen/' + document.getElementById("expandedImg").name).then(function (response) { //En caso de carga exitosa del recurso
-		recargarElemento2("http://localhost/Proyecto/admin/login", "ImagesBox");
+		recargarElemento2("http://localhost/proyecto/admin/login", "ImagesBox");
 	}).catch(function (error) { });
 }
 
@@ -497,7 +497,7 @@ function guardarUsuario() {
 		formdata.append('txt_clave', document.getElementById("txt_clave").value);
 		formdata.append('usuarios', document.getElementById("usuarios").value);
 		axios.post('guardarUsuario', formdata).then(function (response) { //En caso de carga exitosa del recurso
-			recargarElemento("http://localhost/Proyecto/admin/login", "usuariosDiv");
+			recargarElemento("http://localhost/proyecto/admin/login", "usuariosDiv");
 			alertify.set('notifier', 'position', 'top-right');
 			alertify.success('Elementos guardados con exito');
 		}).catch(function (error) {

@@ -1,20 +1,15 @@
 <?php if ($this->session->userdata['logged_in']['logged_in'] == TRUE) { ?>
-
   <div id="panel_app">
-
     <div id="user_top">
       <?php echo "<label> Bienvenido " . $this->session->userdata['logged_in']['realname'] . "</label>"; ?>
       <?php echo form_open_multipart('admin/logout'); ?>
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">&#10005</button>
       <?php echo form_close(); ?>
     </div>
-
     <div id="divBoton">
-
       <div id="menu2"> <button id="menu" onclick="change('div_secciones')">Editar Secciones</button> </div>
       <div id="menu2"><button id="menu" onclick="change('usuariosDiv')">Agregar/Editar Usuarios</button> </div>
     </div>
-
     <div id="divGrande">
       <div id="div_secciones" class="main_panel1">
         <div class="row">
@@ -117,8 +112,6 @@
       </div>
     </div>
   </div>
-
-
 <?php
 } else {
   header("location: " ."http://localhost/proyecto/admin"); //dirección de arranque especificada en config.php y luego en routes.php
