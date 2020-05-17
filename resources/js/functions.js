@@ -440,6 +440,7 @@ function recargarElemento4(page, element) {
 }
 
 function ChangeImage() {
+	
 	var file = document.getElementById("txt_file").files[0].name;
 	document.getElementById("imagenS").src = '../resources/photos/' + file;
 }
