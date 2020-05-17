@@ -36,7 +36,7 @@
 			<div id="form_container">
 				<label id="txt_titulo">Member Login</label>
 				<?php echo form_open('admin/login');	?>
-				<input type="text" name="txt_username" id="txt_username" placeholder="USER" title="Usuario" class="cajatexto" /><br />
+				<input type="text" name="txt_username" id="txt_username" placeholder="USERNAME" title="Usuario" class="cajatexto" /><br />
 				<input type="password" name="txt_password" id="txt_password" placeholder="**********" title="Contraseña" class="cajatexto" /><br />
 				<input type="submit" value="LOGIN" name="btn_login" id="btn_login" /><br />
 				<?php echo form_close(); ?>
