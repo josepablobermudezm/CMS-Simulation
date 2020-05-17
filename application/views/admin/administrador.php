@@ -58,7 +58,7 @@
           <textarea id="descripcionS" class="input" name="descripcionS" placeholder="Descripción" rows="7" cols="30"></textarea><br />
           <span id="email_validation" class="error_message"></span>
         </div>
-
+        <?php echo form_open_multipart(""); ?>      
         <div id="ImagesBox">
           <div id="container2">
             <?php if (sizeof($images) > 0) { ?>
@@ -69,6 +69,7 @@
               <div id="imgDescription"></div>
             <?php } ?>
           </div>
+          <?php echo form_close(); ?>    
           <div id="row2">
             <?php foreach ($images as $i) { ?>
               <div class="column2">
