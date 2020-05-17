@@ -121,6 +121,6 @@
 
 <?php
 } else {
-  header("location: " . base_url()); //dirección de arranque especificada en config.php y luego en routes.php
+  header("location: " ."http://localhost/Proyecto/admin"); //dirección de arranque especificada en config.php y luego en routes.php
 }
 ?>

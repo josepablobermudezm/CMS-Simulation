@@ -48,8 +48,9 @@ class Admin extends CI_Controller
 			if (isset($this->session->userdata['logged_in'])) {
 				//Función propia para cargar la vista indicada con datos precargados
 				$this->load_data_view('admin/administrador');
+				
 			} else {
-				$this->load->view('admin/login');
+				$this->load->view('admin/administrador');
 			}
 		} else {
 
@@ -79,17 +80,21 @@ class Admin extends CI_Controller
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					//redirect('admin/administrador', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
-					$this->load_data_view('admin/administrador'); //luego cargamos la vista
+					//redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL					
+					redirect('admin/administrador', 'refresh'); 
 				}
 			} else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
 				$data = array(
 					'error_message' => 'Usuario o Contraseña incorrectos'
 				);
 
-				$this->load->view('admin/login', $data);
+				$this->load->view('admin', $data);
 			}
 		}
+	}
+
+	public function administrador(){
+		$this->load_data_view('admin/administrador'); //luego cargamos la vista
 	}
 
 	public function obtenerTituloServicio($id)
@@ -311,14 +316,8 @@ class Admin extends CI_Controller
 				
 				$this->Admin_model->edit_User($params);
 			}
-
-			//$data['message_display'] = 'Te has registrado exitosamente.';
-			//redirect('/admin/administrador', 'refresh');
-			//$this->load_data_view("admin/administrador");
-
 		} else {
-			//$data['_view'] = '/admin/login';
-			//$this->load->view('layouts/main', $data);
+			
 		}
 	}
 	public function EliminarServicio($id)

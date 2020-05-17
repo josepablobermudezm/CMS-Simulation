@@ -501,7 +501,6 @@ function guardarUsuario() {
 			alertify.set('notifier', 'position', 'top-right');
 			alertify.success('Elementos guardados con exito');
 		}).catch(function (error) {
-			console.log(error);
 			alertify.set('notifier', 'position', 'top-right');
 			alertify.error("Error al guardar, verifica que el nombre de usuario o correo no existan ya en el sistema");
 		 });
